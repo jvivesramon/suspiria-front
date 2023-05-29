@@ -2,19 +2,23 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "../../store";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "../../styles/GlobalStyle";
+import theme from "../../styles/theme/theme";
 
 describe("Given an App component", () => {
   describe("When rendered", () => {
-    test("Then it should show the text 'Hello world!", () => {
-      const expectedText = /hello world!/i;
-
+    test("Then it should show a container", () => {
       render(
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </ThemeProvider>
       );
 
-      const text = screen.getByText(expectedText);
+      const text = screen.getByRole("heading", { name: "Hello World" });
 
       expect(text).toBeInTheDocument();
     });
