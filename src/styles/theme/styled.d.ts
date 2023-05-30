@@ -23,7 +23,7 @@ declare module "styled-components" {
 
     fonts: {
       primary: string;
-      secundary: string;
+      secondary: string;
     };
 
     size: {

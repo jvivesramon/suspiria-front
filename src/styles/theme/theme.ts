@@ -7,8 +7,8 @@ const theme: DefaultTheme = {
     primary: "#2f2f35",
     secondary: "#242428",
     tertiary: "#eda82c",
-    white: "#ffffff",
-    black: "#000000",
+    white: "#fff",
+    black: "#000",
     logo: "#45a0e0",
     error: "#ff5454",
     ok: "#54ff65",
@@ -22,7 +22,7 @@ const theme: DefaultTheme = {
 
   fonts: {
     primary: "Gurajada",
-    secundary: "Jomolhari",
+    secondary: "Jomolhari",
   },
 
   size: {
