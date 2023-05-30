@@ -5,6 +5,7 @@ const HeaderStyled = styled.header`
   justify-content: center;
   align-items: center;
   height: 68px;
+  padding: 0 20px;
   background-color: ${(props) => props.theme.colors.secondary};
   box-shadow: black 0px 10px 10px;
 `;
