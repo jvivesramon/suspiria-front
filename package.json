@@ -1,10 +1,10 @@
 {
-  "name": "coders-template",
+  "name": "suspiria",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "build:dev": "tsc && vite build --watch",
     "test": "vitest run",
