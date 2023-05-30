@@ -15,6 +15,7 @@ declare module "styled-components" {
       white: string;
       black: string;
       logo: string;
+      info: string;
       error: string;
       ok: string;
 
@@ -28,6 +29,8 @@ declare module "styled-components" {
 
     size: {
       title: string;
+      slogan: string;
+      info: string;
       secondaryTitle: string;
       medium: string;
       text: string;
