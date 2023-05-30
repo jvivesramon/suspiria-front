@@ -12,6 +12,7 @@ const Nav = (): React.ReactElement => {
               alt="create form logo"
               width="48"
               height="45.5"
+              loading="lazy"
             />
           </NavLink>
         </li>
@@ -25,6 +26,7 @@ const Nav = (): React.ReactElement => {
               alt="logout logo"
               width="48"
               height="48"
+              loading="lazy"
             />
           </NavLink>
         </li>

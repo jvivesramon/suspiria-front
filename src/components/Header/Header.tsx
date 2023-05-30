@@ -10,10 +10,11 @@ const Header = (): React.ReactElement => {
         <Nav />
       ) : (
         <img
-          src="images/suspiria-title.svg"
+          src="images/header-title/suspiria-title.svg"
           alt="Suspiria logo"
           width="144"
           height="56"
+          loading="lazy"
         />
       )}
     </HeaderStyled>
