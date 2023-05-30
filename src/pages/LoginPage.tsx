@@ -12,7 +12,7 @@ const LoginPage = (): React.ReactElement => {
       </span>
       <img
         src={`images/illustrations/woman-1.svg`}
-        alt="a woman leaning on his knee with a melancholy mood"
+        alt="A woman leaning on his knee with a melancholy mood"
         width="320"
         height="320"
         loading="lazy"
