@@ -6,14 +6,14 @@ import { ThemeProvider } from "styled-components";
 import { RouterProvider } from "react-router-dom";
 import theme from "./styles/theme/theme";
 import GlobalStyle from "./styles/GlobalStyle";
-import router from "./routers/appRouter";
+import appRouter from "./routers/appRouter";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <RouterProvider router={appRouter} />
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

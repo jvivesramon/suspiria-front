@@ -4,12 +4,10 @@ import Header from "../Header/Header";
 
 const Layout = (): React.ReactElement => {
   return (
-    <>
-      <ContainerStyled>
-        <Header />
-        <Outlet />
-      </ContainerStyled>
-    </>
+    <ContainerStyled>
+      <Header />
+      <Outlet />
+    </ContainerStyled>
   );
 };
 
