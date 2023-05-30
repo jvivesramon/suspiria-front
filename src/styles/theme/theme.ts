@@ -10,6 +10,7 @@ const theme: DefaultTheme = {
     white: "#fff",
     black: "#000",
     logo: "#45a0e0",
+    info: "#ff535d",
     error: "#ff5454",
     ok: "#54ff65",
 
@@ -26,11 +27,13 @@ const theme: DefaultTheme = {
   },
 
   size: {
-    title: "95px",
-    secondaryTitle: "36px",
-    medium: "30px",
-    text: "25px",
-    details: "16px",
+    title: "5.938rem",
+    slogan: "2.813rem",
+    info: "2.438rem",
+    secondaryTitle: "2.25rem",
+    medium: "1.875rem",
+    text: "1.563rem",
+    details: "1rem",
   },
 };
 
