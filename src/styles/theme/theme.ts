@@ -28,7 +28,7 @@ const theme: DefaultTheme = {
   size: {
     title: "95px",
     secondaryTitle: "36px",
-    button: "30px",
+    medium: "30px",
     text: "25px",
     details: "16px",
   },

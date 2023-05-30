@@ -29,7 +29,7 @@ declare module "styled-components" {
     size: {
       title: string;
       secondaryTitle: string;
-      button: string;
+      medium: string;
       text: string;
       details: string;
     };
