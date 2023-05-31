@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm/LoginForm";
-import useUser from "../hooks/useUser";
+import useUser from "../hooks/useUser/useUser";
 import LoginPageStyled from "./LoginPageStyled";
 import { UserCredentials } from "../components/types";
 import path from "../routers/paths/paths";

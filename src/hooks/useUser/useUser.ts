@@ -1,6 +1,6 @@
 import axios from "axios";
-import { UserCredentials } from "../components/types";
-import { errorMessage } from "../utils/errorMessages";
+import { UserCredentials } from "../../components/types";
+import { errorMessage } from "../../utils/errorMessages";
 
 const useUser = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
