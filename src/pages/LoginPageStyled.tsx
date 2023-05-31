@@ -3,6 +3,8 @@ import styled from "styled-components";
 const LoginPageStyled = styled.main`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-inline: auto;
 
   .login-container {
     &__info {
@@ -23,7 +25,7 @@ const LoginPageStyled = styled.main`
       font-family: ${(props) => props.theme.fonts.secondary};
       font-size: ${(props) => props.theme.size.title};
       color: ${(props) => props.theme.colors.logo};
-      margin: 0 0 50px 0;
+      margin: 0 0 30px 0;
     }
 
     &__slogan {
@@ -45,6 +47,7 @@ const LoginPageStyled = styled.main`
 
   .home-image {
     margin: 0 auto;
+    margin-bottom: 40px;
     width: 430px;
     height: 430px;
   }

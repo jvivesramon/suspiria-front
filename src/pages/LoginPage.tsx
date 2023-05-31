@@ -1,3 +1,4 @@
+import LoginForm from "../components/LoginForm/LoginForm";
 import LoginPageStyled from "./LoginPageStyled";
 
 const LoginPage = (): React.ReactElement => {
@@ -10,6 +11,7 @@ const LoginPage = (): React.ReactElement => {
         <span className="login-container__slogan--color">colors</span>
         tell you stories
       </span>
+      <LoginForm />
       <img
         src={`images/illustrations/woman-1.svg`}
         alt="A woman leaning on his knee with a melancholy mood"
