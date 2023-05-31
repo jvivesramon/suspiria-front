@@ -1,4 +1,4 @@
-import { UserStateStructure, UserTokenStructure } from "../store/user/types";
+import { UserStateStructure, UserTokenStructure } from "../components/types";
 
 export const initialUserStateMock: UserStateStructure = {
   id: "",
