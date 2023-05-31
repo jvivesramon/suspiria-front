@@ -38,6 +38,10 @@ ol {
   margin: 0;
 }
 
+input {
+  border: none
+}
+
 ::placeholder {
   font-family: inherit;
 }
