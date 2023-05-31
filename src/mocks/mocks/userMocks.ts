@@ -1,4 +1,8 @@
-import { UserStateStructure, UserTokenStructure } from "../../components/types";
+import {
+  UserCredentials,
+  UserStateStructure,
+  UserTokenStructure,
+} from "../../components/types";
 
 export const initialUserStateMock: UserStateStructure = {
   id: "",
@@ -18,6 +22,11 @@ export const newUserDataTokenMock: UserStateStructure = {
   username: "admin",
   token: "token",
   isLogged: true,
+};
+
+export const userData: UserCredentials = {
+  username: "Judit",
+  password: "Judit",
 };
 
 export const tokenMock = {

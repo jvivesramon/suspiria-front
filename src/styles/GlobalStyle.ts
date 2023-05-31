@@ -22,7 +22,7 @@ p {
   margin: 0;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
