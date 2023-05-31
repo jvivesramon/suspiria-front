@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
+import { tokenMock, userData } from "../../mocks/mocks/userMocks";
 import useUser from "./useUser";
-import { tokenMock, userData } from "../mocks/mocks/userMocks";
 
 describe("Given a getUserToken function,", () => {
   describe("When it is called,", () => {

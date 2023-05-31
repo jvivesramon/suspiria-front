@@ -21,6 +21,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: path.homeCollection,
+        element: <Navigate to={path.app} replace />,
+      },
     ],
   },
 ]);

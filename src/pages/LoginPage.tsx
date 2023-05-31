@@ -1,7 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm/LoginForm";
+import useUser from "../hooks/useUser/useUser";
 import LoginPageStyled from "./LoginPageStyled";
+import { UserCredentials } from "../components/types";
+import path from "../routers/paths/paths";
+import useLocalStorage from "../hooks/useLocalStorage/useLocalStorage";
 
 const LoginPage = (): React.ReactElement => {
+  const { setToken } = useLocalStorage();
+  const { getUserToken } = useUser();
+  const Navigate = useNavigate();
+
+  const onSubmit = async (userCredentials: UserCredentials) => {
+    const token = await getUserToken(userCredentials);
+
+    setToken("token", token);
+
+    Navigate(path.homeCollection, { replace: true });
+  };
+
   return (
     <LoginPageStyled className="login-container">
       <span className="login-container__info">Welcome to</span>
@@ -11,7 +28,7 @@ const LoginPage = (): React.ReactElement => {
         <span className="login-container__slogan--color">colors</span>
         tell you stories
       </span>
-      <LoginForm actionOnClick={() => ""} />
+      <LoginForm actionOnClick={onSubmit} />
       <img
         src={`images/illustrations/woman-1.svg`}
         alt="A woman leaning on his knee with a melancholy mood"
