@@ -22,8 +22,8 @@ const theme: DefaultTheme = {
   },
 
   fonts: {
-    primary: "Gurajada",
-    secondary: "Jomolhari",
+    primary: "Gurajada, sans-serif",
+    secondary: "Jomolhari, serif",
   },
 
   size: {
