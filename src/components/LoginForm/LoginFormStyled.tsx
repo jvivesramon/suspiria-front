@@ -9,7 +9,7 @@ const LoginFormStyled = styled.div`
     min-width: 300px;
     max-width: 430px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
     gap: 30px;
     border-radius: 3px;
     background-color: ${(props) => props.theme.colors.black};

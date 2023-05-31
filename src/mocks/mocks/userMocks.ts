@@ -1,4 +1,4 @@
-import { UserStateStructure, UserTokenStructure } from "../components/types";
+import { UserStateStructure, UserTokenStructure } from "../../components/types";
 
 export const initialUserStateMock: UserStateStructure = {
   id: "",
@@ -18,4 +18,9 @@ export const newUserDataTokenMock: UserStateStructure = {
   username: "admin",
   token: "token",
   isLogged: true,
+};
+
+export const tokenMock = {
+  token:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDYzMjdmNjA5MGE0OWZhYWVlNDRkYjQiLCJuYW1lIjoiSnVkaXQiLCJpYXQiOjE2ODQyNjEwNTQsImV4cCI6MTY4NDQzMzg1NH0.frmwLkTjCzIvfZlbIBN7aAfjKqdjXiQkCuIO4M_blQQ",
 };
