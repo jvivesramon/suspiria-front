@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): React.ReactElement => {
@@ -17,7 +18,7 @@ const LoginForm = (): React.ReactElement => {
           type="password"
           id="password"
         />
-        <button className="login-button">Log In</button>
+        <Button className="login-button" text="Log In" />
       </form>
     </LoginFormStyled>
   );
