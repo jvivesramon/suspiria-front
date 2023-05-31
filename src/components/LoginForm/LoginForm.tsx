@@ -23,11 +23,11 @@ const LoginForm = ({ actionOnClick }: LoginFormProps): React.ReactElement => {
   const handleOnSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    setUserLoginState(initialUserLoginState);
     actionOnClick(userLoginState);
+    setUserLoginState(initialUserLoginState);
   };
 
-  const isValid = !userLoginState.username && !userLoginState.password;
+  const isValid = !userLoginState.username || !userLoginState.password;
 
   return (
     <LoginFormStyled>
@@ -53,11 +53,7 @@ const LoginForm = ({ actionOnClick }: LoginFormProps): React.ReactElement => {
           value={userLoginState.password}
           onChange={onChangeLogin}
         />
-        <Button
-          className={`login-button ${!isValid && `disable`}`}
-          text="Log In"
-          isDisable={!isValid}
-        />
+        <Button className={"login-button"} text="Log In" isDisable={isValid} />
       </form>
     </LoginFormStyled>
   );

@@ -28,7 +28,7 @@ const LoginFormStyled = styled.div`
       }
 
       ::placeholder {
-        color: "#999";
+        color: #999;
       }
     }
   }
@@ -49,11 +49,11 @@ const LoginFormStyled = styled.div`
       background-color: ${(props) => props.theme.colors.logo};
       font-size: ${(props) => props.theme.size.medium};
       letter-spacing: 0.5px;
-    }
-  }
 
-  .disable {
-    background-color: ${(props) => props.theme.colors.primary};
+      &:disabled {
+        background-color: #999;
+      }
+    }
   }
 `;
 export default LoginFormStyled;

@@ -49,7 +49,6 @@ input {
 button {
   font-family: inherit;
   border: none;
-  background-color: transparent;
   cursor: pointer;
 }
 `;

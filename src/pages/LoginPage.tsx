@@ -11,7 +11,7 @@ const LoginPage = (): React.ReactElement => {
         <span className="login-container__slogan--color">colors</span>
         tell you stories
       </span>
-      <LoginForm />
+      <LoginForm actionOnClick={() => ""} />
       <img
         src={`images/illustrations/woman-1.svg`}
         alt="A woman leaning on his knee with a melancholy mood"
