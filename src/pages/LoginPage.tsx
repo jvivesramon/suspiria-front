@@ -17,7 +17,6 @@ const LoginPage = (): React.ReactElement => {
         alt="A woman leaning on his knee with a melancholy mood"
         width="320"
         height="320"
-        loading="lazy"
         className="home-image"
       />
     </LoginPageStyled>

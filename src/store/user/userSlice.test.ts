@@ -2,7 +2,7 @@ import {
   initialUserStateMock,
   newUserDataTokenMock,
   userDataTokenMock,
-} from "../../mocks/userMocks";
+} from "../../mocks/mocks/userMocks";
 import { loginUserActionCreator, userReducer } from "./userSlice";
 
 describe("Given a loginUser reducer", () => {
