@@ -1,6 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import "@fontsource/jomolhari";
-import "@fontsource/gurajada";
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -9,24 +7,8 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-@font-face {
-  font-display: swap; 
-  font-family: 'Jomolhari';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/assets/jomolhari-latin-400-normal-05031377.woff2') format('woff2'); 
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Gurajada';
-  font-style: normal;
-  font-weight: 400;
-  src: url('assets/gurajada-latin-400-normal-670cf3f0.woff2') format('woff2'); 
-}
-
 html {  
-  font-family: "Jomolhari, serif";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body,
