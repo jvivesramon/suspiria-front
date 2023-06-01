@@ -3,7 +3,11 @@ import {
   newUserDataTokenMock,
   userDataTokenMock,
 } from "../../mocks/mocks/userMocks";
-import { loginUserActionCreator, userReducer } from "./userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+  userReducer,
+} from "./userSlice";
 
 describe("Given a loginUser reducer", () => {
   describe("When it is called with a current user data and an action with new user data", () => {
@@ -16,6 +20,20 @@ describe("Given a loginUser reducer", () => {
       );
 
       const expectedNewState = newUserDataTokenMock;
+
+      expect(newUserState).toStrictEqual(expectedNewState);
+    });
+  });
+});
+
+describe("Given a logoutUser reducer", () => {
+  describe("When it is called with an empty action", () => {
+    test("Then it should return an empty list of user data", () => {
+      const currentState = initialUserStateMock;
+
+      const newUserState = userReducer(currentState, logoutUserActionCreator());
+
+      const expectedNewState = currentState;
 
       expect(newUserState).toStrictEqual(expectedNewState);
     });
