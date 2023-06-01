@@ -18,7 +18,13 @@ const App = (): JSX.Element => {
     }
 
     const decodedToken = getTokenUserData(token);
-    dispatch(loginUserActionCreator(decodedToken));
+
+    const userData = {
+      ...decodedToken,
+      token,
+    };
+
+    dispatch(loginUserActionCreator(userData));
   }, [getToken, getTokenUserData, dispatch]);
 
   return <Layout />;

@@ -1,10 +1,13 @@
-export interface UserTokenStructure {
+export interface DecodedUserDataStructure {
   id: string;
   name: string;
+}
+
+export interface UserTokenStructure extends DecodedUserDataStructure {
   token: string;
 }
 
-export interface UserStateStructure extends UserTokenStructure {
+export interface UserDataStructure extends UserTokenStructure {
   isLogged: boolean;
 }
 export interface UserCredentials {

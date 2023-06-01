@@ -1,7 +1,6 @@
 import {
   initialUserStateMock,
   newUserDataTokenMock,
-  userDataTokenMock,
 } from "../../mocks/mocks/userMocks";
 import {
   loginUserActionCreator,
@@ -16,12 +15,10 @@ describe("Given a loginUser reducer", () => {
 
       const newUserState = userReducer(
         currentState,
-        loginUserActionCreator(userDataTokenMock)
+        loginUserActionCreator(newUserDataTokenMock)
       );
 
-      const expectedNewState = newUserDataTokenMock;
-
-      expect(newUserState).toStrictEqual(expectedNewState);
+      expect(newUserState).toStrictEqual(newUserDataTokenMock);
     });
   });
 });

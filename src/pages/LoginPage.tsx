@@ -25,8 +25,14 @@ const LoginPage = (): React.ReactElement => {
 
     setToken("token", token);
 
-    const decodeToken = getTokenUserData(token);
-    dispatch(loginUserActionCreator(decodeToken));
+    const decodedToken = getTokenUserData(token);
+
+    const userData = {
+      ...decodedToken,
+      token,
+    };
+
+    dispatch(loginUserActionCreator(userData));
 
     navigate(path.homeCollection);
   };

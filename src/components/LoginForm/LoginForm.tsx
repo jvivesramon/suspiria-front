@@ -36,7 +36,6 @@ const LoginForm = ({ actionOnClick }: LoginFormProps): React.ReactElement => {
         autoComplete="off"
         onSubmit={handleOnSubmit}
       >
-        <h2 className="login-title">Log in</h2>
         <input
           placeholder="Username:"
           className="form-container__input"
