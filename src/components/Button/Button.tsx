@@ -2,7 +2,7 @@ interface ButtonProps {
   className?: string;
   text?: string;
   isDisable?: boolean;
-  actionOnClick: () => void;
+  actionOnClick?: () => void;
   children?: React.ReactElement;
 }
 

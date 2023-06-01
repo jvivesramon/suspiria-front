@@ -1,6 +1,10 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Nav from "./Nav";
 import { renderWithProviders } from "../../testUtils/testUtils";
+import { RouteObject, createMemoryRouter } from "react-router-dom";
+import path from "../../routers/paths/paths";
+import { userStateMock } from "../../mocks/mocks/userMocks";
 
 describe("Given a Nav component", () => {
   describe("When it is rendered", () => {
@@ -33,6 +37,29 @@ describe("Given a Nav component", () => {
       const expectedResult = screen.getByText(textIcon);
 
       expect(expectedResult).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user is logged and clicks on the logout button", () => {
+    test("Then it should redirect to the loginPage", () => {
+      const routes: RouteObject[] = [
+        {
+          path: path.app,
+          element: <Nav />,
+        },
+      ];
+
+      const router = createMemoryRouter(routes);
+
+      renderWithProviders(<Nav />, { userStore: userStateMock });
+
+      const button = screen.getByRole("button", {
+        name: "logout logo",
+      });
+
+      userEvent.click(button);
+
+      expect(router.state.location.pathname).toStrictEqual(path.app);
     });
   });
 });
