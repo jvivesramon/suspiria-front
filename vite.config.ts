@@ -19,7 +19,7 @@ export default defineConfig({
         "**/*.test.{ts,tsx}",
         "**/types.ts",
         "**/*.d.ts",
-        "src/routers/",
+        "src/routers/appRouter.tsx",
         "src/styles/GlobalStyle.ts",
         "src/main.tsx",
       ],

@@ -14,19 +14,21 @@ const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
   const { getTokenUserData } = useToken();
   const dispatch = useAppDispatch();
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = async (userCredentials: UserCredentials) => {
     const token = await getUserToken(userCredentials);
 
-    if (token) {
-      setToken("token", token);
-
-      const decodeToken = getTokenUserData(token);
-      dispatch(loginUserActionCreator(decodeToken));
-
-      Navigate(path.homeCollection, { replace: true });
+    if (!token) {
+      return;
     }
+
+    setToken("token", token);
+
+    const decodeToken = getTokenUserData(token);
+    dispatch(loginUserActionCreator(decodeToken));
+
+    navigate(path.homeCollection);
   };
 
   return (

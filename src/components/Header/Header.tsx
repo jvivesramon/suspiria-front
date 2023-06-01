@@ -1,8 +1,9 @@
+import { useAppSelector } from "../../store";
 import Nav from "../Nav/Nav";
 import HeaderStyled from "./HeaderStyled";
 
 const Header = (): React.ReactElement => {
-  const isLogged = false;
+  const { isLogged } = useAppSelector((store) => store.userStore);
 
   return (
     <HeaderStyled>

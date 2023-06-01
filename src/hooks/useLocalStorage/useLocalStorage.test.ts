@@ -20,7 +20,7 @@ describe("Given the useLocalStorage function", () => {
       expect(expectedResult).toStrictEqual(value);
     });
 
-    test("Then it should call the removeToken function and remove the token from localStorage", () => {
+    test("Then it should call the removeToken function and remove the token from local storage", () => {
       const {
         result: {
           current: { setToken, removeToken },
