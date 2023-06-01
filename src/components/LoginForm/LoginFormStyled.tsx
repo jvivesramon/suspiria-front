@@ -47,6 +47,7 @@ const LoginFormStyled = styled.div`
       margin-bottom: 30px;
       color: ${(props) => props.theme.colors.white};
       background-color: ${(props) => props.theme.colors.logo};
+      font-family: ${(props) => props.theme.fonts.primary};
       font-size: ${(props) => props.theme.size.medium};
       letter-spacing: 0.5px;
 
