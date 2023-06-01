@@ -1,6 +1,6 @@
 export interface UserTokenStructure {
   id: string;
-  username: string;
+  name: string;
   token: string;
 }
 
