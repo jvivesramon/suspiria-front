@@ -24,6 +24,10 @@ const NavStyled = styled.nav`
       align-items: center;
     }
   }
+
+  .active {
+    border-bottom: 2px solid ${(props) => props.theme.colors.logo};
+  }
 `;
 
 export default NavStyled;
