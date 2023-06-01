@@ -3,7 +3,7 @@ import { UserStateStructure, UserTokenStructure } from "../../components/types";
 
 const initialUserState: UserStateStructure = {
   id: "",
-  username: "",
+  name: "",
   token: "",
   isLogged: false,
 };

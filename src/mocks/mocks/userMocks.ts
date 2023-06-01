@@ -6,21 +6,20 @@ import {
 
 export const initialUserStateMock: UserStateStructure = {
   id: "",
-  username: "",
+  name: "",
   token: "",
   isLogged: false,
 };
 
 export const userDataTokenMock: UserTokenStructure = {
-  id: "12345",
-  username: "admin",
-  token: "token",
+  id: "646327f6090a49faaee44db4",
+  name: "Judit",
+  token:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDYzMjdmNjA5MGE0OWZhYWVlNDRkYjQiLCJuYW1lIjoiSnVkaXQifQ.vwJN4mocEuK6u4SDT-Ydga4eZVRKkpPmo-W6pq7KW6k",
 };
 
 export const newUserDataTokenMock: UserStateStructure = {
-  id: "12345",
-  username: "admin",
-  token: "token",
+  ...userDataTokenMock,
   isLogged: true,
 };
 
@@ -31,5 +30,5 @@ export const userData: UserCredentials = {
 
 export const tokenMock = {
   token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDYzMjdmNjA5MGE0OWZhYWVlNDRkYjQiLCJuYW1lIjoiSnVkaXQiLCJpYXQiOjE2ODQyNjEwNTQsImV4cCI6MTY4NDQzMzg1NH0.frmwLkTjCzIvfZlbIBN7aAfjKqdjXiQkCuIO4M_blQQ",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDYzMjdmNjA5MGE0OWZhYWVlNDRkYjQiLCJuYW1lIjoiSnVkaXQifQ.vwJN4mocEuK6u4SDT-Ydga4eZVRKkpPmo-W6pq7KW6k",
 };
