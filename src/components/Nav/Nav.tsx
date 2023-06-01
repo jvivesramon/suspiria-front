@@ -15,6 +15,7 @@ const Nav = (): React.ReactElement => {
     dispatch(logoutUserActionCreator());
 
     removeToken("token");
+
     navigate(path.app);
   };
 
