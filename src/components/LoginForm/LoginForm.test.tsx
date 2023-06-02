@@ -3,16 +3,17 @@ import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { renderWithProviders } from "../../testUtils/testUtils";
 import LoginForm from "./LoginForm";
-import { userData } from "../../mocks/mocks/userMocks";
+import {
+  passwordPlaceholder,
+  validUserCredentials,
+  usernamePlaceholder,
+} from "../../mocks/mocks/userMocks";
 
 beforeAll(() => {
   vi.clearAllMocks();
 });
 
 describe("Given a LoginForm component", () => {
-  const usernamePlaceholder = "Username:";
-  const passwordPlaceholder = "Password:";
-
   const onClick = vi.fn();
 
   describe("When it is rendered", () => {
@@ -50,11 +51,21 @@ describe("Given a LoginForm component", () => {
       const expectedPasswordPlaceholder =
         screen.getByPlaceholderText(passwordPlaceholder);
 
-      await userEvent.type(expectedUsernamePlaceholder, userData.username);
-      await userEvent.type(expectedPasswordPlaceholder, userData.password);
+      await userEvent.type(
+        expectedUsernamePlaceholder,
+        validUserCredentials.username
+      );
+      await userEvent.type(
+        expectedPasswordPlaceholder,
+        validUserCredentials.password
+      );
 
-      expect(expectedUsernamePlaceholder).toHaveValue(userData.username);
-      expect(expectedPasswordPlaceholder).toHaveValue(userData.password);
+      expect(expectedUsernamePlaceholder).toHaveValue(
+        validUserCredentials.username
+      );
+      expect(expectedPasswordPlaceholder).toHaveValue(
+        validUserCredentials.password
+      );
     });
   });
 
@@ -68,8 +79,14 @@ describe("Given a LoginForm component", () => {
         screen.getByPlaceholderText(passwordPlaceholder);
       const loginButton = screen.getByRole("button", { name: "Log In" });
 
-      await userEvent.type(usernamePlaceholderField, userData.username);
-      await userEvent.type(passwordPlaceholderField, userData.password);
+      await userEvent.type(
+        usernamePlaceholderField,
+        validUserCredentials.username
+      );
+      await userEvent.type(
+        passwordPlaceholderField,
+        validUserCredentials.password
+      );
       await userEvent.click(loginButton);
 
       expect(onClick).toHaveBeenCalled();

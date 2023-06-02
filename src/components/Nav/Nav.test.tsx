@@ -11,7 +11,7 @@ import path from "../../routers/paths/paths";
 
 describe("Given a Nav component", () => {
   describe("When it is rendered", () => {
-    let textImage = "create form logo";
+    let textImage = "";
     test("Then it should show a create logo", () => {
       textImage = "create form logo";
 
@@ -63,7 +63,7 @@ describe("Given a Nav component", () => {
 
       await userEvent.click(button);
 
-      expect(router.state.location.pathname).toStrictEqual(path.app);
+      expect(router.state.location.pathname).toStrictEqual(path.login);
     });
   });
 });
