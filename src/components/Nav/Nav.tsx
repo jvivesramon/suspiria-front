@@ -16,7 +16,7 @@ const Nav = (): React.ReactElement => {
 
     removeToken("token");
 
-    navigate(path.app);
+    navigate(path.login);
   };
 
   return (

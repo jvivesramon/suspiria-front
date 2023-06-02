@@ -17,24 +17,24 @@ const LoginPage = (): React.ReactElement => {
   const navigate = useNavigate();
 
   const onSubmit = async (userCredentials: UserCredentials) => {
-    const token = await getUserToken(userCredentials);
+    try {
+      const token = await getUserToken(userCredentials);
 
-    if (!token) {
+      setToken("token", token);
+
+      const decodedToken = getTokenUserData(token);
+
+      const userData = {
+        ...decodedToken,
+        token,
+      };
+
+      dispatch(loginUserActionCreator(userData));
+
+      navigate(path.homeCollection);
+    } catch {
       return;
     }
-
-    setToken("token", token);
-
-    const decodedToken = getTokenUserData(token);
-
-    const userData = {
-      ...decodedToken,
-      token,
-    };
-
-    dispatch(loginUserActionCreator(userData));
-
-    navigate(path.homeCollection);
   };
 
   return (
