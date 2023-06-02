@@ -4,6 +4,7 @@ interface ButtonProps {
   isDisable?: boolean;
   actionOnClick?: () => void;
   children?: React.ReactElement;
+  ariaText?: string;
 }
 
 const Button = ({
@@ -12,9 +13,15 @@ const Button = ({
   isDisable,
   actionOnClick,
   children,
+  ariaText,
 }: ButtonProps): React.ReactElement => {
   return (
-    <button className={className} disabled={isDisable} onClick={actionOnClick}>
+    <button
+      aria-label={ariaText}
+      className={className}
+      disabled={isDisable}
+      onClick={actionOnClick}
+    >
       {text}
       {children}
     </button>
