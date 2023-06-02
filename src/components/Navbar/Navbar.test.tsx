@@ -45,7 +45,7 @@ describe("Given a Nav component", () => {
   });
 
   describe("When the user is logged and clicks on the logout button", () => {
-    test.only("Then it should redirect to the loginPage", async () => {
+    test("Then it should redirect to the loginPage", async () => {
       const buttonName = "logout";
       const titleText = "Suspiria";
       const routes: RouteObject[] = [
