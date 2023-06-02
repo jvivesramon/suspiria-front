@@ -1,12 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import NavStyled from "./NavStyled";
+import NavStyled from "./NavbarStyled";
 import Button from "../Button/Button";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { useAppDispatch } from "../../store";
 import { logoutUserActionCreator } from "../../store/user/userSlice";
 import path from "../../routers/paths/paths";
 
-const Nav = (): React.ReactElement => {
+const Navbar = (): React.ReactElement => {
   const { removeToken } = useLocalStorage();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -38,6 +38,7 @@ const Nav = (): React.ReactElement => {
         </li>
         <li>
           <Button
+            ariaText="logout"
             className="nav-container__logout-logo"
             actionOnClick={onClickLogout}
           >
@@ -55,4 +56,4 @@ const Nav = (): React.ReactElement => {
   );
 };
 
-export default Nav;
+export default Navbar;
