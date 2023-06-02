@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Header from "./Header";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import {
   initialUserStateMock,
   userStateMock,
@@ -11,7 +11,9 @@ describe("Given a Header component", () => {
     test("Then it should show a header with the Suspiria logo when the user isn't logged", () => {
       const imageText = "Suspiria logo";
 
-      renderWithProviders(<Header />, { userStore: initialUserStateMock });
+      renderWithProviders(wrapWithRouter(<Header />), {
+        userStore: initialUserStateMock,
+      });
 
       const expectedResult = screen.getByRole("img", {
         name: imageText,
@@ -23,7 +25,9 @@ describe("Given a Header component", () => {
     test("Then it should show a header with the 'Home' icon nav when the user is logged", () => {
       const imageText = "Home";
 
-      renderWithProviders(<Header />, { userStore: userStateMock });
+      renderWithProviders(wrapWithRouter(<Header />), {
+        userStore: userStateMock,
+      });
 
       const expectedResult = screen.getByText(imageText);
 
