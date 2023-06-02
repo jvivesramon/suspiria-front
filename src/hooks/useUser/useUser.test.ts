@@ -1,6 +1,16 @@
 import { renderHook } from "@testing-library/react";
-import { tokenMock, userData } from "../../mocks/mocks/userMocks";
+import {
+  invalidUserCredentials,
+  tokenMock,
+  validUserCredentials,
+} from "../../mocks/mocks/userMocks";
 import useUser from "./useUser";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
+
+beforeAll(() => {
+  server.restoreHandlers();
+});
 
 describe("Given a getUserToken function,", () => {
   describe("When it is called,", () => {
@@ -13,9 +23,25 @@ describe("Given a getUserToken function,", () => {
         },
       } = renderHook(() => useUser());
 
-      const expectedToken = await getUserToken(userData);
+      const expectedToken = await getUserToken(validUserCredentials);
 
       expect(expectedToken).toStrictEqual(token);
+    });
+  });
+
+  describe("When it receives invalid user credentials", () => {
+    test("Then it should return throw 'Wrong credentials' error message", () => {
+      server.resetHandlers(...errorHandlers);
+
+      const {
+        result: {
+          current: { getUserToken },
+        },
+      } = renderHook(() => useUser());
+
+      const thrownError = getUserToken(invalidUserCredentials);
+
+      expect(thrownError).rejects.toThrowError();
     });
   });
 });

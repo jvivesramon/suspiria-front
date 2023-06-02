@@ -32,7 +32,15 @@ export const newUserDataTokenMock: UserDataStructure = {
   isLogged: true,
 };
 
-export const userData: UserCredentials = {
+export const usernamePlaceholder = "Username:";
+export const passwordPlaceholder = "Password:";
+
+export const validUserCredentials: UserCredentials = {
   username: "Judit",
   password: "Judit",
+};
+
+export const invalidUserCredentials: UserCredentials = {
+  username: "invalid",
+  password: "invalid",
 };

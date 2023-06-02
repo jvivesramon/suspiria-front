@@ -1,3 +1,4 @@
+import { renderHook } from "@testing-library/react";
 import { tokenMock, userDataTokenMock } from "../../mocks/mocks/userMocks";
 import useToken from "./useToken";
 
@@ -7,7 +8,11 @@ describe("Given a useToken function", () => {
       const { token } = tokenMock;
       const decodeToken = userDataTokenMock;
 
-      const { getTokenUserData } = useToken();
+      const {
+        result: {
+          current: { getTokenUserData },
+        },
+      } = renderHook(() => useToken());
 
       const expectedToken = getTokenUserData(token);
 

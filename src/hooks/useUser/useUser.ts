@@ -12,7 +12,7 @@ const useUser = () => {
       } = await axios.post<{ token: string }>(`${apiUrl}/user/login`, userData);
 
       return token;
-    } catch (error) {
+    } catch {
       throw new Error(errorMessage.wrongCredentials);
     }
   };
