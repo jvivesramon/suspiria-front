@@ -5,6 +5,10 @@ import { renderWithProviders } from "../../testUtils/testUtils";
 import LoginForm from "./LoginForm";
 import { userData } from "../../mocks/mocks/userMocks";
 
+beforeAll(() => {
+  vi.clearAllMocks();
+});
+
 describe("Given a LoginForm component", () => {
   const usernamePlaceholder = "Username:";
   const passwordPlaceholder = "Password:";
