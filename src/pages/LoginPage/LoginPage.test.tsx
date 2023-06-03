@@ -16,6 +16,7 @@ import path from "../../routers/paths/paths";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
 import { invalidUserCredentials } from "../../mocks/mocks/userMocks";
+import PicturesPage from "../PicturesPage/PicturesPage";
 
 describe("Given a LoginPage page", () => {
   const routes: RouteObject[] = [
@@ -25,6 +26,7 @@ describe("Given a LoginPage page", () => {
     },
     {
       path: path.homeCollection,
+      element: <PicturesPage />,
     },
   ];
 
@@ -55,7 +57,9 @@ describe("Given a LoginPage page", () => {
   });
 
   describe("When the user complete the fields and click on 'Log In' button", () => {
-    test("Then it should redirects to home page", async () => {
+    test("Then it should show the suspiria logo", async () => {
+      const imageText = "Suspiria logo";
+
       const router = createMemoryRouter(routes);
 
       renderWithProviders(<RouterProvider router={router} />);
@@ -74,9 +78,14 @@ describe("Given a LoginPage page", () => {
         passwordPlaceholderField,
         validUserCredentials.password
       );
+
       await userEvent.click(loginButton);
 
-      expect(router.state.location.pathname).toBe(path.homeCollection);
+      const expectedLogo = screen.getByRole("img", {
+        name: imageText,
+      });
+
+      expect(expectedLogo).toBeInTheDocument();
     });
   });
 
@@ -103,8 +112,6 @@ describe("Given a LoginPage page", () => {
         invalidUserCredentials.password
       );
       await userEvent.click(loginButton);
-
-      screen.debug();
 
       expect(router.state.location.pathname).toBe(path.app);
     });
