@@ -1,27 +1,30 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders, wrapWithRouter } from "../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import LoginPage from "./LoginPage";
 import {
   passwordPlaceholder,
   validUserCredentials,
   usernamePlaceholder,
-} from "../mocks/mocks/userMocks";
+} from "../../mocks/mocks/userMocks";
 import {
   RouteObject,
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
-import path from "../routers/paths/paths";
-import { server } from "../mocks/server";
-import { errorHandlers } from "../mocks/handlers";
-import { invalidUserCredentials } from "../mocks/mocks/userMocks";
+import path from "../../routers/paths/paths";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
+import { invalidUserCredentials } from "../../mocks/mocks/userMocks";
 
 describe("Given a LoginPage page", () => {
   const routes: RouteObject[] = [
     {
       path: path.app,
       element: <LoginPage />,
+    },
+    {
+      path: path.homeCollection,
     },
   ];
 
@@ -100,6 +103,8 @@ describe("Given a LoginPage page", () => {
         invalidUserCredentials.password
       );
       await userEvent.click(loginButton);
+
+      screen.debug();
 
       expect(router.state.location.pathname).toBe(path.app);
     });

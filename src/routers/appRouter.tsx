@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
 import path from "./paths/paths";
 import { Suspense } from "react";
-import { LazyLoginPage } from "./lazyPages";
+import { LazyLoginPage, LazyPicturesPage } from "./lazyPages";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,6 +23,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: path.homeCollection,
+        element: (
+          <Suspense>
+            <LazyPicturesPage />
+          </Suspense>
+        ),
       },
     ],
   },

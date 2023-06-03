@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../components/LoginForm/LoginForm";
-import useUser from "../hooks/useUser/useUser";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import useUser from "../../hooks/useUser/useUser";
 import LoginPageStyled from "./LoginPageStyled";
-import { UserCredentials } from "../components/types";
-import path from "../routers/paths/paths";
-import useLocalStorage from "../hooks/useLocalStorage/useLocalStorage";
-import useToken from "../hooks/useToken/useToken";
-import { useAppDispatch } from "../store";
-import { loginUserActionCreator } from "../store/user/userSlice";
+import { UserCredentials } from "../../components/types";
+import path from "../../routers/paths/paths";
+import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
+import useToken from "../../hooks/useToken/useToken";
+import { useAppDispatch } from "../../store";
+import { loginUserActionCreator } from "../../store/user/userSlice";
 
 const LoginPage = (): React.ReactElement => {
   const { setToken } = useLocalStorage();
