@@ -29,8 +29,6 @@ describe("Given lazyPicturesPage function", () => {
 
       renderWithProviders(<RouterProvider router={router} />);
 
-      screen.debug();
-
       const expectedLogo = await waitFor(() =>
         screen.getByRole("img", {
           name: imageText,
