@@ -8,7 +8,7 @@ import {
   createMemoryRouter,
 } from "react-router-dom";
 import path from "../../routers/paths/paths";
-import LoginPage from "../../pages/LoginPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 describe("Given a Nav component", () => {
   describe("When it is rendered", () => {

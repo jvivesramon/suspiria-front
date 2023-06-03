@@ -1,27 +1,32 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders, wrapWithRouter } from "../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import LoginPage from "./LoginPage";
 import {
   passwordPlaceholder,
   validUserCredentials,
   usernamePlaceholder,
-} from "../mocks/mocks/userMocks";
+} from "../../mocks/mocks/userMocks";
 import {
   RouteObject,
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
-import path from "../routers/paths/paths";
-import { server } from "../mocks/server";
-import { errorHandlers } from "../mocks/handlers";
-import { invalidUserCredentials } from "../mocks/mocks/userMocks";
+import path from "../../routers/paths/paths";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
+import { invalidUserCredentials } from "../../mocks/mocks/userMocks";
+import PicturesPage from "../PicturesPage/PicturesPage";
 
 describe("Given a LoginPage page", () => {
   const routes: RouteObject[] = [
     {
       path: path.app,
       element: <LoginPage />,
+    },
+    {
+      path: path.homeCollection,
+      element: <PicturesPage />,
     },
   ];
 
@@ -52,7 +57,9 @@ describe("Given a LoginPage page", () => {
   });
 
   describe("When the user complete the fields and click on 'Log In' button", () => {
-    test("Then it should redirects to home page", async () => {
+    test("Then it should show the suspiria logo", async () => {
+      const imageText = "Suspiria logo";
+
       const router = createMemoryRouter(routes);
 
       renderWithProviders(<RouterProvider router={router} />);
@@ -71,9 +78,14 @@ describe("Given a LoginPage page", () => {
         passwordPlaceholderField,
         validUserCredentials.password
       );
+
       await userEvent.click(loginButton);
 
-      expect(router.state.location.pathname).toBe(path.homeCollection);
+      const expectedLogo = screen.getByRole("img", {
+        name: imageText,
+      });
+
+      expect(expectedLogo).toBeInTheDocument();
     });
   });
 
