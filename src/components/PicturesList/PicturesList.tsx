@@ -8,7 +8,9 @@ const PictureList = (): React.ReactElement => {
     <PicturesListStyled>
       <ul>
         {pictures.map((picture) => (
-          <li className="picture-card" key={picture.id}></li>
+          <li className="picture-card" key={picture.id}>
+            <h2>{picture.pictureData.title}</h2>
+          </li>
         ))}
       </ul>
     </PicturesListStyled>
