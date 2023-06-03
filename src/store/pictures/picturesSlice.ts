@@ -5,7 +5,7 @@ const initialUserState: PicturesListStructure = {
   pictures: [],
 };
 
-const userSlice = createSlice({
+const picturesSlice = createSlice({
   name: "pictures",
   initialState: initialUserState,
   reducers: {
@@ -19,5 +19,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { loadPictures: loadPicturesActionCreator } = userSlice.actions;
-export const userReducer = userSlice.reducer;
+export const { loadPictures: loadPicturesActionCreator } =
+  picturesSlice.actions;
+export const picturesReducer = picturesSlice.reducer;
