@@ -1,3 +1,4 @@
+import PictureList from "../../components/PicturesList/PicturesList";
 import { picturesMock } from "../../mocks/mocks/picturesMock";
 import { useAppDispatch } from "../../store";
 import { loadPicturesActionCreator } from "../../store/pictures/picturesSlice";
@@ -10,15 +11,18 @@ const PicturesPage = (): React.ReactElement => {
   dispatch(loadPicturesActionCreator(pictures));
 
   return (
-    <PicturesPageStyled>
-      <img
-        src="images/headerTitle/suspiria-title.svg"
-        alt="Suspiria logo"
-        width="144"
-        height="56"
-        loading="lazy"
-      />
-    </PicturesPageStyled>
+    <>
+      <PicturesPageStyled>
+        <img
+          src="images/headerTitle/suspiria-title.svg"
+          alt="Suspiria logo"
+          width="144"
+          height="56"
+          loading="lazy"
+        />
+      </PicturesPageStyled>
+      <PictureList />
+    </>
   );
 };
 

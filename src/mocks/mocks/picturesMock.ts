@@ -3,6 +3,7 @@ import { PicturesListStructure } from "../../types";
 export const emptyPicturesMock: PicturesListStructure = {
   pictures: [
     {
+      id: "",
       pictureData: {
         title: "",
         creationDate: "",
@@ -31,6 +32,7 @@ export const emptyPicturesMock: PicturesListStructure = {
 export const picturesMock: PicturesListStructure = {
   pictures: [
     {
+      id: "1",
       pictureData: {
         title: "Girl with a Pearl Earring",
         creationDate: "1667",
