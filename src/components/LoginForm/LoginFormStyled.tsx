@@ -6,7 +6,7 @@ const LoginFormStyled = styled.div`
   .form-container {
     display: flex;
     flex-direction: column;
-    max-width: 430px;
+    max-width: 360px;
     margin: 0 auto;
     padding: 50px 20px;
     gap: 30px;
