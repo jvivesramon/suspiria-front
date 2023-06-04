@@ -46,7 +46,7 @@ export const picturesMock: PicturesListStructure = {
       temperatureColor: {
         warm: false,
         cold: false,
-        mixed: false,
+        mixed: true,
       },
       colors: {
         colorFirst: "#fff2e1",

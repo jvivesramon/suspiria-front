@@ -6,7 +6,7 @@ const PictureCardStyled = styled.article`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  box-shadow: black 0px 0px 10px 5px;
+  box-shadow: #141414 0px 0px 10px 5px;
 
   .card-title {
     font-family: ${(props) => props.theme.fonts.primary};
