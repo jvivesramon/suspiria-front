@@ -7,6 +7,12 @@ const PicturesListStyled = styled.section`
   width: 100%;
   gap: 20px;
   padding: 20px;
+
+  .picture-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export default PicturesListStyled;

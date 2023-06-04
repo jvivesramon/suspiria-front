@@ -6,13 +6,13 @@ const LoginFormStyled = styled.div`
   .form-container {
     display: flex;
     flex-direction: column;
-    min-width: 300px;
     max-width: 430px;
     margin: 0 auto;
     padding: 50px 20px;
     gap: 30px;
     border-radius: 3px;
     background-color: ${(props) => props.theme.colors.black};
+    box-shadow: black 0px 10px 10px;
 
     &__input {
       color: ${(props) => props.theme.colors.white};
