@@ -2,13 +2,14 @@ import axios from "axios";
 import { useAppSelector } from "../../store";
 import { PictureCardStructure } from "../../types";
 import path from "../../routers/paths/paths";
+import { useCallback } from "react";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const useApi = () => {
   const { token } = useAppSelector((state) => state.userStore);
 
-  const getPictures = async (): Promise<PictureCardStructure[]> => {
+  const getPictures = useCallback(async (): Promise<PictureCardStructure[]> => {
     try {
       const {
         data: { pictures },
@@ -20,7 +21,7 @@ const useApi = () => {
     } catch {
       throw new Error("Sorry, we couldn't get the stories");
     }
-  };
+  }, [token]);
 
   return { getPictures };
 };

@@ -47,9 +47,10 @@ const LoginPageStyled = styled.main`
 
   .home-image {
     margin: 0 auto;
+    margin-top: 30px;
     margin-bottom: 40px;
-    width: 430px;
-    height: 430px;
+    width: 360px;
+    height: 360px;
   }
 `;
 
