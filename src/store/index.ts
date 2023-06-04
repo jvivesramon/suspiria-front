@@ -4,10 +4,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { userReducer } from "./user/userSlice";
 import { picturesReducer } from "./pictures/picturesSlice";
+import { uiReducer } from "./ui/uiSlice";
 
 const rootReducer = combineReducers({
   userStore: userReducer,
   picturesStore: picturesReducer,
+  uiStore: uiReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
