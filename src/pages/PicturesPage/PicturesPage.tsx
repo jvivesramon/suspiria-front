@@ -1,4 +1,4 @@
-import PictureList from "../../components/PicturesList/PicturesList";
+import PicturesList from "../../components/PicturesList/PicturesList";
 import { picturesMock } from "../../mocks/mocks/picturesMock";
 import { useAppDispatch } from "../../store";
 import { loadPicturesActionCreator } from "../../store/pictures/picturesSlice";
@@ -21,7 +21,7 @@ const PicturesPage = (): React.ReactElement => {
           loading="lazy"
         />
       </PicturesPageStyled>
-      <PictureList />
+      <PicturesList />
     </>
   );
 };

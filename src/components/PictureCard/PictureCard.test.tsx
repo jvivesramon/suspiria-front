@@ -1,14 +1,16 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/testUtils";
-import PicturesList from "./PicturesList";
 import { picturesMock } from "../../mocks/mocks/picturesMock";
+import PictureCard from "./PictureCard";
 
-describe("Given a PicturesList component", () => {
+describe("Given a PictureCard component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show one picture card with its title", () => {
+    test("Then it should show picture card with its title", () => {
       const title = picturesMock.pictures[0].pictureData.title;
 
-      renderWithProviders(<PicturesList />, { picturesStore: picturesMock });
+      renderWithProviders(<PictureCard picture={picturesMock.pictures[0]} />, {
+        picturesStore: picturesMock,
+      });
 
       const expectedCard = screen.getByRole("heading", {
         name: title,

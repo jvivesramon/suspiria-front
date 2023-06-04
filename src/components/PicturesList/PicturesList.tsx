@@ -1,15 +1,17 @@
 import { useAppSelector } from "../../store";
+import PictureCard from "../PictureCard/PictureCard";
 import PicturesListStyled from "./PicturesListStyled";
 
-const PictureList = (): React.ReactElement => {
-  const pictures = useAppSelector((store) => store.picturesStore.pictures);
+const PicturesList = (): React.ReactElement => {
+  const pictures = useAppSelector((store) => store.picturesStore);
+  const { pictures: picturesCard } = pictures;
 
   return (
     <PicturesListStyled>
       <ul>
-        {pictures.map((picture) => (
+        {picturesCard.map((picture) => (
           <li className="picture-card" key={picture.id}>
-            <h2>{picture.pictureData.title}</h2>
+            <PictureCard picture={picture} />
           </li>
         ))}
       </ul>
@@ -17,4 +19,4 @@ const PictureList = (): React.ReactElement => {
   );
 };
 
-export default PictureList;
+export default PicturesList;
