@@ -2,7 +2,7 @@ import { useAppSelector } from "../../store";
 import PictureCard from "../PictureCard/PictureCard";
 import PicturesListStyled from "./PicturesListStyled";
 
-const PictureList = (): React.ReactElement => {
+const PicturesList = (): React.ReactElement => {
   const pictures = useAppSelector((store) => store.picturesStore);
   const { pictures: picturesCard } = pictures;
 
@@ -19,4 +19,4 @@ const PictureList = (): React.ReactElement => {
   );
 };
 
-export default PictureList;
+export default PicturesList;
