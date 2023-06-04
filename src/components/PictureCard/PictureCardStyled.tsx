@@ -6,6 +6,7 @@ const PictureCardStyled = styled.article`
   justify-content: center;
   align-items: center;
   padding: 10px;
+  width: 280px;
   box-shadow: #141414 0px 0px 10px 5px;
 
   .card-title {
@@ -13,6 +14,8 @@ const PictureCardStyled = styled.article`
     font-size: ${(props) => props.theme.size.secondaryTitle};
     color: ${(props) => props.theme.colors.white};
     text-align: center;
+    padding: 10px;
+    line-height: 40px;
     border-bottom: 1px solid ${(props) => props.theme.colors.logo};
 
     &__author {
