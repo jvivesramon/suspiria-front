@@ -1,169 +1,62 @@
 # Suspiria App
 
-## Data
+This application is developed with React, Vite, and Redux Toolkit. Its main concept is to showcase the main colors of famous paintings to the public. Additionally, users can create, update, and delete cards representing these colors.
 
-### Picture:
-  - pictureData: 
-    - title
-    - creationDate
-    - author
-    - movement
-  - image
-  - description
-  - temperatureColor:
-    - warm
-    - cold
-    - mixed
-  - colors:
-    - colorFirst
-    - colorSecond
-    - colorThird
-    - colorFourth
-    - color Fifth
-    - color Sixth
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Judit-Vives-Final-Project-front-202304-bcn&metric=alert_status)](https://sonarcloud.io/summary/overall?id=isdi-coders-2023_Judit-Vives-Final-Project-front-202304-bcn)
 
-### User
+## Features
 
-  - id
-  - username
-  - token 
-  - isLogged
+- Display main colors of famous paintings
+- Create new pictures cards
+- Update existing pictures cards
+- Delete pictures cards
 
-### Data UI
+## Technologies Used
 
-- UI:
-  - isLoading: boolean
-  - isError: boolean
+- React: A JavaScript library for building user interfaces
+- Vite: A fast development server and build tool for modern web applications.
+- Redux Toolkit: A library for efficient Redux development.
+- Styled Components: A CSS-in-JS library to write CSS styles directly in your JavaScript code to style React components.
 
-## Stores:
+## Usage
 
-#### User:
-- loginUser()
-- logoutUser()
+1. You have to log in to access the home page:
 
-#### UI:
-- showLoading()
-- hideLoading()
-- showModal()
-- hideModal()
+- Credentials:
+  - Username: admin
+  - Password: admin
 
-#### Pictures:
-- loadPictures()
-- loadOnePicture()
-- addPicture()
-- updatePicture()
-- removePicture()
-- filterByColors()
+2. On the home page, you will see a list of color cards representing paintings and their main colors.
 
+3. To create a new color card, click on the "Create" button and fill out the form with the painting details and its main colors.
 
-## Components
+4. To update an existing color card, click on the "Edit" button on the respective card and make the necessary changes.
 
-### App
+5. To delete a color card, click on the "Delete" button on the respective card.
 
-- Renders Layout
-- Receives a token from local storage
+## Getting Started
 
-### Layout
+To run Suspiria App, please follow these steps:
 
-- Renders header
+Build the app
 
-### Header
+```
+npm run build
+```
 
-- Renders a NavBar component
+Start a development server:
 
-### NavBar
+```
+npm run dev
+```
 
-- Render a log out button
-- Render a home button
-- Render a createPicture button
+## Check it out
 
-### ModifyPictureForm
+![Suspiria App](./public/images/media/welcome-login-page.png)
+![Suspiria App](./public/images/media/collection-cards.png)
+![Suspiria App](./public/images/media/detail-card.png)
+![Suspiria App](./public/images/media/own-create-detail-card.png)
 
-- handleSubmit()
-- Receives dispatch()
-- Receives picture data from id to update
-- Renders form structure
-- Renders a "Modify story" button component:
-  - actionOnClick: handleSubmit
+## Authors
 
-### ModifyPictureForm
-
-- handleSubmit()
-- Receives dispatch()
-- Renders form structure
-- Renders a "Add story" button component:
-  - actionOnClick: handleSubmit
-
-### LoginForm
-
-- State:
-  - User credentials
-- handleLoginSubmit()
-- Receives dispatch()
-- Shows two inputs with "username" and "password"
-- Renders a Button component
-  - text: "Login"
-  - actionOnClick: handleSubmit
-
-### PictureList
-
-- Renders a filter menu
-- Receives a collection of pictures
-- Renders all the picture collections
-
-### Filter
-
-- Receives a dispatch
-- Receives picture
-- loadFilteredColorPictures()
-
-### PictureCard
-
-- Receives a pictureData
-- Receives dispatch()
-- Shows the picture's data title, image description and color's palette
-- Renders two Button components with:
-  - text: "delete" / "modify"
-  - actionOnClick: handleClick
-
-### Button
-
-- Receives a text or a icon
-- Receives an action on click
-- Shows a button with the received text
-- Calls the received action when the button is clicked
-
-### Footer
-
-- Renders Suspiria'app details
-- Renders a logo
-
-### Feedback
-
-- Receives modalImage, modalIcon and modalMessage from props
-- Receives isError
-- Renders the modal
-
-### Pagination
-
-- Handles page navigation
-- loadNext()
-- loadPrevious()
-
-
-## Login Form
-
-  - Receives setLocalStorageToken() (useLocalStorage)
-  - Receives getUserToken() (useUser)
-  - Receives decodeToken() (useToken)
-  - Receives dispatch - (loginUserActionCreator)
-  - navigate(/pictures) (useNavigate)
-  - submitForm()
-
-  - Renders a logo
-  - Renders LoginForm
-
-- 404
-
-  - Renders a description
-  - Renders an image
+Judit Vives
