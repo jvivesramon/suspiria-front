@@ -3,6 +3,7 @@ import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
 import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages";
 import {
   hideLoadingActionCreator,
+  hideModalActionCreator,
   showLoadingActionCreator,
   showModalActionCreator,
   uiReducer,
@@ -55,6 +56,23 @@ describe("Given a showModal reducer", () => {
       const newExpectedModalState = uiReducer(
         falseLoadingState,
         showModalActionCreator(actionPayload)
+      );
+
+      expect(newExpectedModalState).toStrictEqual(newModalState);
+    });
+  });
+});
+
+describe("Given a hideModal reducer", () => {
+  describe("When it is called", () => {
+    test("Then it should return the new modal state set to false", () => {
+      const newModalState = {
+        ...uiStoreMock,
+      };
+
+      const newExpectedModalState = uiReducer(
+        falseLoadingState,
+        hideModalActionCreator()
       );
 
       expect(newExpectedModalState).toStrictEqual(newModalState);
