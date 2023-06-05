@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import Loading from "../UI/Loading/Loading";
 import { useAppSelector } from "../../store";
 import Feedback from "../UI/Feedback/Feedback";
+import NotFoundPage from "../UI/NotFoundPage/NotFoundPage";
 
 const Layout = (): React.ReactElement => {
   const { isLoading, isVisible, state } = useAppSelector(
@@ -15,6 +16,7 @@ const Layout = (): React.ReactElement => {
       <Header />
       {isLoading && <Loading />}
       {isVisible && <Feedback state={state} />}
+      <NotFoundPage />
       <Outlet />
     </ContainerStyled>
   );
