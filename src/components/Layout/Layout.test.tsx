@@ -1,10 +1,7 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/testUtils";
 import Layout from "./Layout";
-import {
-  falseLoadingState,
-  trueLoadingState,
-} from "../../store/ui/uiSlice.test";
+import { trueLoadingState } from "../../store/ui/uiSlice.test";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
