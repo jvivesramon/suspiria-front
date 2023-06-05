@@ -6,8 +6,8 @@ const LoadingStyled = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  position: absolute;
-  z-index: 1;
+  position: sticky;
+  top: 0;
   background-color: rgb(0 0 0 / 60%);
 
   .loading-container {
