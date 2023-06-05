@@ -1,11 +1,15 @@
+import { uiStoreMock } from "../../mocks/mocks/uiMock";
+import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
+import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
+  showModalActionCreator,
   uiReducer,
 } from "./uiSlice";
 
-export const falseLoadingState = { isLoading: false };
-export const trueLoadingState = { isLoading: true };
+export const falseLoadingState = { ...uiStoreMock };
+export const trueLoadingState = { ...uiStoreMock, isLoading: true };
 
 describe("Given a showLoading reducer", () => {
   describe("When it is called", () => {
@@ -29,6 +33,31 @@ describe("Given a hideLoading reducer", () => {
       );
 
       expect(newExpectedLoadingState).toStrictEqual(falseLoadingState);
+    });
+  });
+});
+
+describe("Given a showModal reducer", () => {
+  describe("When it is called", () => {
+    test("Then it should return the new modal state set to true", () => {
+      const actionPayload = {
+        isError: true,
+        modalActionText: actionMessage.deleted,
+        text: feedbackMessages.errorLoggin,
+      };
+
+      const newModalState = {
+        ...uiStoreMock,
+        isVisible: true,
+        state: actionPayload,
+      };
+
+      const newExpectedModalState = uiReducer(
+        falseLoadingState,
+        showModalActionCreator(actionPayload)
+      );
+
+      expect(newExpectedModalState).toStrictEqual(newModalState);
     });
   });
 });

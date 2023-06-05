@@ -6,8 +6,8 @@ interface PictureCardProps {
 }
 
 const PictureCard = ({ picture }: PictureCardProps): React.ReactElement => {
-  const { colors: listOfColors } = picture;
-  const colors = Object.values(listOfColors);
+  const { colors: toneColors } = picture;
+  const colors = Object.values(toneColors);
 
   return (
     <PictureCardStyled>

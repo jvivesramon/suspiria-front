@@ -7,6 +7,7 @@ import {
 import useUser from "./useUser";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { wrapperWithProvider } from "../../testUtils/testUtils";
 
 beforeAll(() => {
   server.restoreHandlers();
@@ -21,7 +22,7 @@ describe("Given a getUserToken function,", () => {
         result: {
           current: { getUserToken },
         },
-      } = renderHook(() => useUser());
+      } = renderHook(() => useUser(), { wrapper: wrapperWithProvider });
 
       const expectedToken = await getUserToken(validUserCredentials);
 
@@ -37,7 +38,7 @@ describe("Given a getUserToken function,", () => {
         result: {
           current: { getUserToken },
         },
-      } = renderHook(() => useUser());
+      } = renderHook(() => useUser(), { wrapper: wrapperWithProvider });
 
       const thrownError = getUserToken(invalidUserCredentials);
 

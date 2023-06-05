@@ -1,13 +1,4 @@
-import {
-  ActionMessageProps,
-  FeedbackMessagesProps,
-  StateTextProps,
-} from "./types";
-
-export const stateText: StateTextProps = {
-  congrats: "¡Congratulations! ",
-  sorry: "Something went wrong. ",
-};
+import { ActionMessageProps, FeedbackMessagesProps } from "./types";
 
 export const feedbackMessages: FeedbackMessagesProps = {
   isOk: "Your new story has been succesfully ",
