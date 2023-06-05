@@ -10,7 +10,10 @@ import {
 } from "./uiSlice";
 
 export const falseLoadingState = { ...uiStoreMock };
-export const trueLoadingState = { ...uiStoreMock, isLoading: true };
+export const trueLoadingState = {
+  ...uiStoreMock,
+  isLoading: true,
+};
 
 describe("Given a showLoading reducer", () => {
   describe("When it is called", () => {
