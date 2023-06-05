@@ -42,6 +42,11 @@ const uiSlice = createSlice({
       isVisible: true,
       state: { ...action.payload },
     }),
+    hideModal: (currentState: UiSliceStructure) => ({
+      ...currentState,
+      isVisible: false,
+      state: uiState.state,
+    }),
   },
 });
 
