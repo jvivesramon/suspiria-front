@@ -1,3 +1,5 @@
+import { useAppDispatch } from "../../../store";
+import { hideModalActionCreator } from "../../../store/ui/uiSlice";
 import Button from "../../Button/Button";
 import FeedbackStyled from "./FeedbackStyled";
 
@@ -14,10 +16,16 @@ interface FeedbackStateProp {
 const Feedback = ({
   state: { isError, modalActionText, text },
 }: FeedbackStateProp): React.ReactElement => {
+  const dispatch = useAppDispatch();
+
+  const onCloseHandle = () => {
+    dispatch(hideModalActionCreator());
+  };
+
   return (
     <FeedbackStyled>
       <div className="feedback-container">
-        <Button className="button-feedback">
+        <Button className="button-feedback" actionOnClick={onCloseHandle}>
           <img
             src="images/feedback/close.svg"
             alt="button to close the feedback"
