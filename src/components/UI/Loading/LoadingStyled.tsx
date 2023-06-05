@@ -11,8 +11,8 @@ const LoadingStyled = styled.div`
   background-color: rgb(0 0 0 / 60%);
 
   .loading-container {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     background-size: cover;
     background-position: center;
     animation: imageCycle 2s linear infinite;

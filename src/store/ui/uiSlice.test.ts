@@ -4,8 +4,8 @@ import {
   uiReducer,
 } from "./uiSlice";
 
-const falseLoadingState = { isLoading: false };
-const trueLoadingState = { isLoading: true };
+export const falseLoadingState = { isLoading: false };
+export const trueLoadingState = { isLoading: true };
 
 describe("Given a showLoading reducer", () => {
   describe("When it is called", () => {
