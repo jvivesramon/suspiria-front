@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../../testUtils/testUtils";
 import Feedback from "./Feedback";
 import { actionMessage } from "../../../utils/feedbackMessages/feedbackMessages";
+import { uiStoreMock } from "../../../mocks/mocks/uiMock";
 
 describe("Given a Feedback component", () => {
   describe("When it is rendered", () => {
@@ -9,14 +10,16 @@ describe("Given a Feedback component", () => {
       const feedbackMessage = "Your story couldn't been";
       const errorIconText = "icon for error";
 
-      renderWithProviders(
-        <Feedback
-          isError={true}
-          actionOnClick={() => ""}
-          text={feedbackMessage}
-          modalActionText={actionMessage.deleted}
-        />
-      );
+      const { state } = {
+        ...uiStoreMock,
+        state: {
+          isError: true,
+          modalActionText: actionMessage.deleted,
+          text: feedbackMessage,
+        },
+      };
+
+      renderWithProviders(<Feedback state={state} />);
 
       const expectedText = screen.getByText(feedbackMessage);
       const expectedIconText = screen.getByRole("img", {
@@ -31,14 +34,16 @@ describe("Given a Feedback component", () => {
       const feedbackMessage = "Your new story has been succesfully";
       const iconText = "icon for everything ok";
 
-      renderWithProviders(
-        <Feedback
-          isError={false}
-          actionOnClick={() => ""}
-          text={feedbackMessage}
-          modalActionText={actionMessage.created}
-        />
-      );
+      const { state } = {
+        ...uiStoreMock,
+        state: {
+          isError: false,
+          modalActionText: actionMessage.created,
+          text: feedbackMessage,
+        },
+      };
+
+      renderWithProviders(<Feedback state={state} />);
 
       const expectedText = screen.getByText(feedbackMessage);
       const expectedIconText = screen.getByRole("img", {

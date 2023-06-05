@@ -32,6 +32,12 @@ const LoadingStyled = styled.div`
       background-image: url(images/illustrations/woman-3.svg);
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loading-container {
+      animation: none;
+    }
+  }
 `;
 
 export default LoadingStyled;
