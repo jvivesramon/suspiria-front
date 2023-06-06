@@ -5,7 +5,7 @@ const FeedbackStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   position: sticky;
   top: 0;
   background-color: rgb(0 0 0 / 60%);

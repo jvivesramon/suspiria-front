@@ -6,7 +6,7 @@ const LoadingStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   position: sticky;
   top: 0;
   gap: 20px;
