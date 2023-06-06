@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import App from "./App";
 
 describe("Given an App component", () => {
@@ -7,7 +7,7 @@ describe("Given an App component", () => {
     test("Then it should show a 'Suspiria' logo", () => {
       const expectedText = "Suspiria logo";
 
-      renderWithProviders(<App />);
+      renderWithProviders(wrapWithRouter(<App />));
 
       const expectedResult = screen.getByRole("img", {
         name: expectedText,

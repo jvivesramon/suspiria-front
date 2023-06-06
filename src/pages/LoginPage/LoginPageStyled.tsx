@@ -11,10 +11,10 @@ const LoginPageStyled = styled.main`
       display: flex;
       justify-content: center;
       font-family: ${(props) => props.theme.fonts.primary};
-      font-size: ${(props) => props.theme.size.slogan};
+      font-size: ${(props) => props.theme.size.secondaryTitle};
       letter-spacing: 1px;
       color: ${(props) => props.theme.colors.white};
-      margin: 30px 0 0 0;
+      margin: 15px 0 0 0;
     }
 
     &__title {
@@ -25,7 +25,7 @@ const LoginPageStyled = styled.main`
       font-family: ${(props) => props.theme.fonts.secondary};
       font-size: ${(props) => props.theme.size.title};
       color: ${(props) => props.theme.colors.logo};
-      margin: 0 0 30px 0;
+      margin: 0 0 10px 0;
     }
 
     &__slogan {
@@ -34,13 +34,12 @@ const LoginPageStyled = styled.main`
       letter-spacing: 1px;
       font-family: ${(props) => props.theme.fonts.primary};
       color: ${(props) => props.theme.colors.white};
-      font-size: ${(props) => props.theme.size.info};
+      font-size: ${(props) => props.theme.size.secondaryTitle};
 
       &--color {
         margin: 0 5px;
         font-family: ${(props) => props.theme.fonts.primary};
         color: ${(props) => props.theme.colors.info};
-        font-size: ${(props) => props.theme.size.info};
       }
     }
   }
