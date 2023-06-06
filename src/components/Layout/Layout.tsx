@@ -1,20 +1,22 @@
 import { Outlet } from "react-router-dom";
 import ContainerStyled from "../shared/ContainerStyled";
 import Header from "../Header/Header";
-import Loading from "../UI/Loading/Loading";
+import Loading from "../Loading/Loading";
 import { useAppSelector } from "../../store";
-import Feedback from "../UI/Feedback/Feedback";
+import Modal from "../Modal/Modal";
 
 const Layout = (): React.ReactElement => {
-  const { isLoading, isVisible, state } = useAppSelector(
-    (store) => store.uiStore
-  );
+  const {
+    isLoading,
+    isVisible,
+    modalState: state,
+  } = useAppSelector((store) => store.uiStore);
 
   return (
     <ContainerStyled>
       <Header />
       {isLoading && <Loading />}
-      {isVisible && <Feedback state={state} />}
+      {isVisible && <Modal state={state} />}
       <Outlet />
     </ContainerStyled>
   );

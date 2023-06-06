@@ -2,8 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
 import path from "./paths/paths";
 import { Suspense } from "react";
-import { LazyNotFoundPage, LazyPicturesPage } from "./lazyPages";
-import LoginPage from "../pages/LoginPage/LoginPage";
+import { LazyLoginPage, LazyNotFoundPage, LazyPicturesPage } from "./lazyPages";
 
 const appRouter = createBrowserRouter([
   {
@@ -16,7 +15,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: path.login,
-        element: <LoginPage />,
+        element: (
+          <Suspense>
+            <LazyLoginPage />
+          </Suspense>
+        ),
       },
       {
         path: path.homeCollection,

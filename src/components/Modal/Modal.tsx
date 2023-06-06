@@ -1,21 +1,21 @@
-import { useAppDispatch } from "../../../store";
-import { hideModalActionCreator } from "../../../store/ui/uiSlice";
-import Button from "../../Button/Button";
-import FeedbackStyled from "./FeedbackStyled";
+import { useAppDispatch } from "../../store";
+import { hideModalActionCreator } from "../../store/ui/uiSlice";
+import Button from "../Button/Button";
+import ModalStyled from "./ModalStyled";
 
-interface FeedbackProps {
+interface ModalProps {
   text?: string;
   isError: boolean;
   modalActionText?: string;
 }
 
-interface FeedbackStateProp {
-  state: FeedbackProps;
+interface ModalStateProp {
+  state: ModalProps;
 }
 
-const Feedback = ({
+const Modal = ({
   state: { isError, modalActionText, text },
-}: FeedbackStateProp): React.ReactElement => {
+}: ModalStateProp): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const onCloseHandle = () => {
@@ -23,7 +23,7 @@ const Feedback = ({
   };
 
   return (
-    <FeedbackStyled>
+    <ModalStyled>
       <div className="feedback-container">
         <Button className="button-feedback" actionOnClick={onCloseHandle}>
           <img
@@ -63,8 +63,8 @@ const Feedback = ({
           </span>
         </span>
       </div>
-    </FeedbackStyled>
+    </ModalStyled>
   );
 };
 
-export default Feedback;
+export default Modal;

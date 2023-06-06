@@ -1,9 +1,10 @@
-import { UiSliceStructure } from "../../store/ui/uiSlice";
+import { UiSliceStructure } from "../../store/ui/types";
 
 export const uiStoreMock: UiSliceStructure = {
   isLoading: false,
   isVisible: false,
-  state: {
+
+  modalState: {
     isError: false,
     modalActionText: "",
     text: "",

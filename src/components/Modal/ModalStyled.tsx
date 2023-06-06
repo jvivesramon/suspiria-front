@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const FeedbackStyled = styled.div`
+const ModalStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: rgb(0 0 0 / 60%);
 
@@ -52,4 +52,4 @@ const FeedbackStyled = styled.div`
   }
 `;
 
-export default FeedbackStyled;
+export default ModalStyled;

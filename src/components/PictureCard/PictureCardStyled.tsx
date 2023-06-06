@@ -9,6 +9,10 @@ const PictureCardStyled = styled.article`
   width: 280px;
   box-shadow: #141414 0px 0px 10px 5px;
 
+  .image-card {
+    object-fit: cover;
+  }
+
   .card-title {
     font-family: ${(props) => props.theme.fonts.primary};
     font-size: ${(props) => props.theme.size.secondaryTitle};

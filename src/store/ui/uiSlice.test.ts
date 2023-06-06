@@ -53,7 +53,7 @@ describe("Given a showModal reducer", () => {
       const newModalState = {
         ...uiStoreMock,
         isVisible: true,
-        state: actionPayload,
+        modalState: actionPayload,
       };
 
       const newExpectedModalState = uiReducer(
