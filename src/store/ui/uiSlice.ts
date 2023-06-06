@@ -1,21 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
-interface FeedbackStateStructure {
-  text?: string;
-  isError: boolean;
-  modalActionText?: string;
-}
-
-export interface UiSliceStructure {
-  isLoading: boolean;
-  isVisible: boolean;
-  state: FeedbackStateStructure;
-}
+import { FeedbackStateStructure, UiSliceStructure } from "./types";
 
 const uiState: UiSliceStructure = {
   isLoading: false,
   isVisible: false,
-  state: {
+  modalState: {
     isError: false,
     modalActionText: "",
     text: "",
@@ -40,12 +29,12 @@ const uiSlice = createSlice({
     ) => ({
       ...currentState,
       isVisible: true,
-      state: { ...action.payload },
+      modalState: { ...action.payload },
     }),
     hideModal: (currentState: UiSliceStructure) => ({
       ...currentState,
       isVisible: false,
-      state: uiState.state,
+      modalState: uiState.modalState,
     }),
   },
 });

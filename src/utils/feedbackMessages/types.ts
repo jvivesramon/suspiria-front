@@ -4,6 +4,7 @@ export interface FeedbackMessagesProps {
   isLogged: string;
   errorLoggin: string;
   loggedOut: string;
+  errorPictures: string;
 }
 
 export interface ActionMessageProps {

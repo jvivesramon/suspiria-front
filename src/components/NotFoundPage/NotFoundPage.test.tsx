@@ -1,17 +1,14 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  renderWithProviders,
-  wrapWithRouter,
-} from "../../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import NotFoundPage from "./NotFoundPage";
-import path from "../../../routers/paths/paths";
+import path from "../../routers/paths/paths";
 import {
   RouteObject,
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
-import PicturesPage from "../../../pages/PicturesPage/PicturesPage";
+import PicturesPage from "../../pages/PicturesPage/PicturesPage";
 
 describe("Given a NotFoundPage component", () => {
   describe("When it is rendered", () => {

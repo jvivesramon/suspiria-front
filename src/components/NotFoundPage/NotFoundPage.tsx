@@ -1,7 +1,7 @@
-import Button from "../../Button/Button";
+import Button from "../Button/Button";
 import NotFoundPageStyled from "./NotFoundPageStyled";
 import { useNavigate } from "react-router-dom";
-import path from "../../../routers/paths/paths";
+import path from "../../routers/paths/paths";
 
 const NotFoundPage = (): React.ReactElement => {
   const navigate = useNavigate();

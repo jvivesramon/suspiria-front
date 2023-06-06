@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "../../../testUtils/testUtils";
-import Feedback from "./Feedback";
-import { actionMessage } from "../../../utils/feedbackMessages/feedbackMessages";
-import { uiStoreMock } from "../../../mocks/mocks/uiMock";
+import { renderWithProviders } from "../../testUtils/testUtils";
+import Modal from "./Modal";
+import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
+import { uiStoreMock } from "../../mocks/mocks/uiMock";
 
 describe("Given a Feedback component", () => {
   const feedbackMessage = "Your story couldn't been";
@@ -21,7 +21,7 @@ describe("Given a Feedback component", () => {
     test("Then it should show a 'Something went wrong. Your story couldn't been created' error message and a error icon", () => {
       const errorIconText = "icon for error";
 
-      renderWithProviders(<Feedback state={state} />);
+      renderWithProviders(<Modal state={state} />);
 
       const expectedText = screen.getByText(feedbackMessage);
       const expectedIconText = screen.getByRole("img", {
@@ -45,7 +45,7 @@ describe("Given a Feedback component", () => {
         },
       };
 
-      renderWithProviders(<Feedback state={state} />);
+      renderWithProviders(<Modal state={state} />);
 
       const expectedText = screen.getByText(feedbackMessage);
       const expectedIconText = screen.getByRole("img", {
@@ -61,7 +61,7 @@ describe("Given a Feedback component", () => {
     test("Then the modal has to disapear", async () => {
       const buttonText = "button to close the feedback";
 
-      renderWithProviders(<Feedback state={state} />);
+      renderWithProviders(<Modal state={state} />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,

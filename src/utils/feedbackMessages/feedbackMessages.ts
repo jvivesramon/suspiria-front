@@ -6,6 +6,7 @@ export const feedbackMessages: FeedbackMessagesProps = {
   isLogged: "Succesfully logged in",
   errorLoggin: "Username or password don't match",
   loggedOut: "¡You've been logged out! See you soon",
+  errorPictures: "¡We couldn't get the stories! Try again later",
 };
 
 export const actionMessage: ActionMessageProps = {

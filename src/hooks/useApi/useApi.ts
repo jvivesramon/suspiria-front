@@ -6,7 +6,9 @@ import { useCallback } from "react";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
+  showModalActionCreator,
 } from "../../store/ui/uiSlice";
+import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -27,6 +29,15 @@ const useApi = () => {
       dispatch(hideLoadingActionCreator());
       return pictures;
     } catch {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          modalActionText: feedbackMessages.errorPictures,
+        })
+      );
+
       throw new Error("Sorry, we couldn't get the stories");
     }
   }, [token, dispatch]);

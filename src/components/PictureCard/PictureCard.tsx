@@ -12,6 +12,7 @@ const PictureCard = ({ picture }: PictureCardProps): React.ReactElement => {
   return (
     <PictureCardStyled>
       <img
+        className="image-card"
         src={picture.image}
         alt={`An artpiece called ${picture.pictureData.title} painted by ${picture.pictureData.author}`}
         width="260"

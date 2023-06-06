@@ -8,10 +8,7 @@ import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import useToken from "../../hooks/useToken/useToken";
 import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/user/userSlice";
-import {
-  hideLoadingActionCreator,
-  showModalActionCreator,
-} from "../../store/ui/uiSlice";
+import { showModalActionCreator } from "../../store/ui/uiSlice";
 import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages";
 
 const LoginPage = (): React.ReactElement => {
@@ -45,15 +42,6 @@ const LoginPage = (): React.ReactElement => {
         })
       );
     } catch {
-      dispatch(hideLoadingActionCreator());
-
-      dispatch(
-        showModalActionCreator({
-          isError: true,
-          modalActionText: feedbackMessages.errorLoggin,
-        })
-      );
-
       return;
     }
   };

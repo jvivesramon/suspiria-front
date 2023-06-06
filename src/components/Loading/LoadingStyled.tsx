@@ -7,7 +7,7 @@ const LoadingStyled = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
   gap: 20px;
   background-color: rgb(0 0 0 / 60%);
@@ -18,6 +18,10 @@ const LoadingStyled = styled.div`
     background-size: cover;
     background-position: center;
     animation: imageCycle 2s linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     &__text {
       text-align: center;
@@ -39,12 +43,6 @@ const LoadingStyled = styled.div`
     }
     100% {
       background-image: url(images/illustrations/woman-3.svg);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .loading-container {
-      animation: none;
     }
   }
 `;

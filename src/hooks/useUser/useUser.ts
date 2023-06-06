@@ -6,7 +6,9 @@ import { useAppDispatch } from "../../store";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
+  showModalActionCreator,
 } from "../../store/ui/uiSlice";
+import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages";
 
 const useUser = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -28,6 +30,15 @@ const useUser = () => {
 
       return token;
     } catch {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          modalActionText: feedbackMessages.errorLoggin,
+        })
+      );
+
       throw new Error(errorMessage.wrongCredentials);
     }
   };

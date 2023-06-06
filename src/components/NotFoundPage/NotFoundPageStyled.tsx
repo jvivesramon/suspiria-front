@@ -6,7 +6,7 @@ const NotFoundPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   padding: 20px;
   position: sticky;
   top: 0;
