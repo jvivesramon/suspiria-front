@@ -9,6 +9,7 @@ import {
   showModalActionCreator,
 } from "../../store/ui/uiSlice";
 import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages";
+import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -42,7 +43,34 @@ const useApi = () => {
     }
   }, [token, dispatch]);
 
-  return { getPictures };
+  const deletePicture = async (pictureId: string) => {
+    try {
+      dispatch(showLoadingActionCreator());
+      await axios.delete(`${apiUrl}${path.pictures}/${pictureId}`);
+
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: false,
+          text: feedbackMessages.isOk,
+          modalActionText: actionMessage.deleted,
+        })
+      );
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          text: feedbackMessages.isNotOk,
+          modalActionText: actionMessage.deleted,
+        })
+      );
+    }
+  };
+
+  return { getPictures, deletePicture };
 };
 
 export default useApi;

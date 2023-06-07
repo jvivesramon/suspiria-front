@@ -25,6 +25,7 @@ export const emptyPicturesMock: PicturesListStructure = {
         colorFive: "",
         colorSixth: "",
       },
+      user: "",
     },
   ],
 };
@@ -56,6 +57,7 @@ export const picturesMock: PicturesListStructure = {
         colorFive: "#2f4e75",
         colorSixth: "#070614",
       },
+      user: "1234",
     },
   ],
 };
