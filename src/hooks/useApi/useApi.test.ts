@@ -3,7 +3,8 @@ import { picturesMock } from "../../mocks/mocks/picturesMock";
 import useApi from "./useApi";
 import { wrapperWithProvider } from "../../testUtils/testUtils";
 import { server } from "../../mocks/server";
-import { errorHandlers } from "../../mocks/handlers";
+import { errorHandlers, handlers } from "../../mocks/handlers";
+import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
 
 describe("Given a getPictures function", () => {
   describe("When it is called", () => {
@@ -35,6 +36,46 @@ describe("Given a getPictures function", () => {
       const thrownError = async () => await getPictures();
 
       expect(thrownError).rejects.toThrowError();
+    });
+  });
+});
+
+describe("Given a deletePicture function", () => {
+  describe("When it is called with a valid picture id", () => {
+    test("Then it should show a modal with the text 'Your new story has been succesfully deleted'", async () => {
+      server.resetHandlers(...handlers);
+
+      const expectedMessage = "deleted";
+      const id = "1";
+
+      const {
+        result: {
+          current: { deletePicture },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+      await deletePicture(id);
+
+      expect(expectedMessage).toBe(actionMessage.deleted);
+    });
+  });
+
+  describe("When it is called with an invalid picture id", () => {
+    test("Then it should show a modal with the text 'Your new story couldn`t been deleted'", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const expectedMessage = "deleted";
+      const id = "1";
+
+      const {
+        result: {
+          current: { deletePicture },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+      await deletePicture(id);
+
+      expect(expectedMessage).toBe(actionMessage.deleted);
     });
   });
 });

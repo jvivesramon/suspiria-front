@@ -46,7 +46,9 @@ const useApi = () => {
   const deletePicture = async (pictureId: string) => {
     try {
       dispatch(showLoadingActionCreator());
-      await axios.delete(`${apiUrl}${path.pictures}/${pictureId}`);
+      await axios.delete(`${apiUrl}${path.pictures}/${pictureId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       dispatch(hideLoadingActionCreator());
 
