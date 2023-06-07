@@ -21,6 +21,7 @@ export interface PictureCardStructure {
     colorFive: string;
     colorSixth: string;
   };
+  user: string;
 }
 
 export interface PicturesListStructure {
