@@ -15,9 +15,9 @@ const Layout = (): React.ReactElement => {
   return (
     <ContainerStyled>
       <Header />
+      <Outlet />
       {isLoading && <Loading />}
       {isVisible && <Modal state={state} />}
-      <Outlet />
     </ContainerStyled>
   );
 };

@@ -5,6 +5,7 @@ const PictureCardStyled = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   padding: 10px;
   width: 280px;
   box-shadow: #141414 0px 0px 10px 5px;
@@ -42,6 +43,28 @@ const PictureCardStyled = styled.article`
 
   .card-color {
     flex: 1;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    width: 55px;
+    height: 48px;
+    border-radius: 5px 0 0 5px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 5px 15px;
+
+    &__modify {
+      top: 20px;
+      background-color: ${(props) => props.theme.colors.logo};
+    }
+
+    &__delete {
+      top: 88px;
+      background-color: ${(props) => props.theme.colors.delete};
+    }
   }
 `;
 

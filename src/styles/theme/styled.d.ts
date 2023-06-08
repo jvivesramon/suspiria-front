@@ -17,6 +17,7 @@ declare module "styled-components" {
       logo: string;
       info: string;
       error: string;
+      delete: string;
       ok: string;
 
       button: ButtonThemeStructure;
