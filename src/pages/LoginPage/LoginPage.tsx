@@ -57,7 +57,7 @@ const LoginPage = (): React.ReactElement => {
       </span>
       <LoginForm actionOnClick={onSubmit} />
       <img
-        src={`images/illustrations/woman-1.svg`}
+        src={`images/illustrations/woman-3.svg`}
         alt="A woman leaning on his knee with a melancholy mood"
         width="320"
         height="320"

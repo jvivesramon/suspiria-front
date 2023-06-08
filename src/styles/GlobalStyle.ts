@@ -42,6 +42,11 @@ input {
   border: none
 }
 
+input, select, textarea {
+  font-family: arial;
+  font-size: 16px;
+}
+
 ::placeholder {
   font-family: inherit;
 }
