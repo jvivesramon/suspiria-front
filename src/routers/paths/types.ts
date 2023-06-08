@@ -4,6 +4,7 @@ interface PathsStructure {
   user: string;
   pictures: string;
   homeCollection: string;
+  form: string;
   errorPage: string;
 }
 

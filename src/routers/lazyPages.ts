@@ -9,3 +9,5 @@ export const LazyPicturesPage = lazy(
 export const LazyNotFoundPage = lazy(
   () => import("../components/NotFoundPage/NotFoundPage")
 );
+
+export const LazyFormPage = lazy(() => import("../pages/FormPage/FormPage"));
