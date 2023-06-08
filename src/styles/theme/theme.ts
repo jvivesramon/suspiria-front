@@ -12,6 +12,7 @@ const theme: DefaultTheme = {
     logo: "#45a0e0",
     info: "#ff535d",
     error: "#ff5454",
+    delete: "#c23126",
     ok: "#54ff65",
 
     button: {

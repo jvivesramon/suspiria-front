@@ -3,6 +3,7 @@ import PictureCard from "../PictureCard/PictureCard";
 import PicturesListStyled from "./PicturesListStyled";
 
 const PicturesList = (): React.ReactElement => {
+  const { id } = useAppSelector((store) => store.userStore);
   const pictures = useAppSelector((store) => store.picturesStore);
   const { pictures: picturesCard } = pictures;
 
@@ -11,7 +12,7 @@ const PicturesList = (): React.ReactElement => {
       <ul>
         {picturesCard.map((picture) => (
           <li className="picture-card" key={picture.id}>
-            <PictureCard picture={picture} />
+            <PictureCard picture={picture} userId={id} />
           </li>
         ))}
       </ul>
