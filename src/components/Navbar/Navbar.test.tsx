@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import path from "../../routers/paths/paths";
 import LoginPage from "../../pages/LoginPage/LoginPage";
+import FormPage from "../../pages/FormPage/FormPage";
 
 describe("Given a Nav component", () => {
   describe("When it is rendered", () => {
@@ -45,7 +46,7 @@ describe("Given a Nav component", () => {
   });
 
   describe("When the user is logged and clicks on the logout button", () => {
-    test("Then it should redirect to the loginPage", async () => {
+    test("Then it should redirect to the LoginPage", async () => {
       const buttonName = "logout";
       const titleText = "Suspiria";
       const routes: RouteObject[] = [
@@ -73,6 +74,36 @@ describe("Given a Nav component", () => {
 
       expect(router.state.location.pathname).toBe(path.login);
       expect(title).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user is logged and clicks on the create button", () => {
+    test("Then it should redirect to the FormPage", async () => {
+      const buttonName = "create";
+      const labelImageText = "Image* :";
+
+      const routes: RouteObject[] = [
+        {
+          path: path.app,
+          element: <Navbar />,
+        },
+        {
+          path: path.form,
+          element: <FormPage />,
+        },
+      ];
+
+      const router = createMemoryRouter(routes);
+
+      renderWithProviders(<RouterProvider router={router} />);
+
+      const button = screen.getByLabelText(buttonName);
+
+      await userEvent.click(button);
+
+      const expectedLabel = screen.getByLabelText(labelImageText);
+
+      expect(expectedLabel).toBeInTheDocument();
     });
   });
 });

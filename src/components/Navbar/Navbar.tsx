@@ -19,11 +19,19 @@ const Navbar = (): React.ReactElement => {
     navigate(path.login);
   };
 
+  const onClickCreate = (): void => {
+    navigate(path.form);
+  };
+
   return (
     <NavStyled>
       <ul className="nav-container">
         <li>
-          <NavLink to="/add-story" className="nav-container__create-logo">
+          <Button
+            ariaText="create"
+            className="nav-container__create-logo"
+            actionOnClick={onClickCreate}
+          >
             <img
               src="/images/nav/create.svg"
               alt="create form logo"
@@ -31,7 +39,7 @@ const Navbar = (): React.ReactElement => {
               height="45.5"
               loading="lazy"
             />
-          </NavLink>
+          </Button>
         </li>
         <li className="nav-container__home-logo">
           <NavLink to="/home">Home</NavLink>

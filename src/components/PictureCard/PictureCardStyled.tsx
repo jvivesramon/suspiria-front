@@ -19,6 +19,7 @@ const PictureCardStyled = styled.article`
     font-size: ${(props) => props.theme.size.secondaryTitle};
     color: ${(props) => props.theme.colors.white};
     text-align: center;
+    width: 100%;
     padding: 10px;
     line-height: 40px;
     border-bottom: 1px solid ${(props) => props.theme.colors.logo};

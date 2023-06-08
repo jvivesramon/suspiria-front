@@ -6,6 +6,7 @@ const path: PathsStructure = {
   user: "/user",
   pictures: "/pictures",
   homeCollection: "/home",
+  form: "/form",
   errorPage: "/*",
 };
 
