@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CardFormStyled = styled.div`
+const PictureFormStyled = styled.div`
   padding: 30px 10px;
 
   .form {
@@ -93,4 +93,4 @@ const CardFormStyled = styled.div`
   }
 `;
 
-export default CardFormStyled;
+export default PictureFormStyled;
