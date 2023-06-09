@@ -72,7 +72,46 @@ const useApi = () => {
     }
   };
 
-  return { getPictures, deletePicture };
+  const addPicture = async (
+    newPicture: Partial<PictureCardStructure>
+  ): Promise<{ picture: PictureCardStructure }> => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      const {
+        data: { picture },
+      } = await axios.post<{ picture: PictureCardStructure }>(
+        `${apiUrl}${path.pictures}`,
+        newPicture
+      );
+
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: false,
+          text: feedbackMessages.isOk,
+          modalActionText: actionMessage.created,
+        })
+      );
+
+      return { picture };
+    } catch {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          text: feedbackMessages.isNotOk,
+          modalActionText: actionMessage.created,
+        })
+      );
+
+      throw new Error("Couldn't create the picture");
+    }
+  };
+
+  return { getPictures, deletePicture, addPicture };
 };
 
 export default useApi;
