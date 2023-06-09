@@ -25,11 +25,19 @@ const picturesSlice = createSlice({
         (picture) => picture.id !== action.payload
       ),
     }),
+    addPictures: (
+      currentState: PicturesListStructure,
+      action: PayloadAction<PictureCardStructure>
+    ) => ({
+      ...currentState,
+      pictures: [...currentState.pictures, { ...action.payload }],
+    }),
   },
 });
 
 export const {
   loadPictures: loadPicturesActionCreator,
   deletePicture: deletePictureActionCreator,
+  addPictures: addPicturesActionCreator,
 } = picturesSlice.actions;
 export const picturesReducer = picturesSlice.reducer;

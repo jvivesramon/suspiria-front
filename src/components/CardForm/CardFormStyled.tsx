@@ -31,6 +31,7 @@ const CardFormStyled = styled.div`
       color: ${(props) => props.theme.colors.white};
       background-color: ${(props) => props.theme.colors.primary};
       max-width: 100%;
+      min-width: 100%;
     }
 
     & > input {
@@ -69,6 +70,10 @@ const CardFormStyled = styled.div`
         color: ${(props) => props.theme.colors.white};
         background-color: ${(props) => props.theme.colors.primary};
         width: 100%;
+
+        :focus {
+          outline: 2px solid ${(props) => props.theme.colors.tertiary};
+        }
       }
     }
 
