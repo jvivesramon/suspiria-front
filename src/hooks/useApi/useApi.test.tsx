@@ -1,10 +1,13 @@
-import { renderHook } from "@testing-library/react";
-import { picturesMock } from "../../mocks/mocks/picturesMock";
+import { renderHook, screen } from "@testing-library/react";
+import { addPictureMock, picturesMock } from "../../mocks/mocks/picturesMock";
 import useApi from "./useApi";
-import { wrapperWithProvider } from "../../testUtils/testUtils";
+import {
+  renderWithProviders,
+  wrapperWithProvider,
+} from "../../testUtils/testUtils";
 import { server } from "../../mocks/server";
 import { errorHandlers, handlers } from "../../mocks/handlers";
-import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
+import Layout from "../../components/Layout/Layout";
 
 describe("Given a getPictures function", () => {
   describe("When it is called", () => {
@@ -56,7 +59,11 @@ describe("Given a deletePicture function", () => {
 
       await deletePicture(id);
 
-      expect(expectedMessage).toBe(actionMessage.deleted);
+      renderWithProviders(<Layout />);
+
+      const expectedModal = screen.getByText(expectedMessage);
+
+      expect(expectedModal).toBeInTheDocument();
     });
   });
 
@@ -64,7 +71,6 @@ describe("Given a deletePicture function", () => {
     test("Then it should show a modal with the text 'Your new story couldn`t been deleted'", async () => {
       server.resetHandlers(...errorHandlers);
 
-      const expectedMessage = "deleted";
       const id = "1";
 
       const {
@@ -73,9 +79,45 @@ describe("Given a deletePicture function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      await deletePicture(id);
+      const expectedReject = await deletePicture(id);
 
-      expect(expectedMessage).toBe(actionMessage.deleted);
+      expect(expectedReject).toBeFalsy();
+    });
+  });
+});
+
+describe("Given an addPicture function", () => {
+  describe("When it is called with a valid picture", () => {
+    test("Then it should return the new picture", async () => {
+      server.resetHandlers(...handlers);
+
+      const {
+        result: {
+          current: { addPicture },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+      const expectedPicture = await addPicture({ ...addPictureMock });
+
+      expect(expectedPicture).toStrictEqual({
+        picture: picturesMock.pictures[0],
+      });
+    });
+
+    describe("When it is called with an invalid picture", () => {
+      test("Then it should a modal with the message error 'Your story couldn't been created'", async () => {
+        server.resetHandlers(...errorHandlers);
+
+        const {
+          result: {
+            current: { addPicture },
+          },
+        } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+        const thrownError = async () => await addPicture({ ...addPictureMock });
+
+        expect(thrownError).rejects.toThrowError();
+      });
     });
   });
 });

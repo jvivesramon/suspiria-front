@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/testUtils";
-import CardForm from "./CardForm";
+import PictureForm from "./PictureForm";
 
 describe("Given a CardForm component", () => {
   describe("When it rendered", () => {
@@ -8,7 +8,7 @@ describe("Given a CardForm component", () => {
       const buttonText = "Add story";
       const labelImageText = "Image* :";
 
-      renderWithProviders(<CardForm />);
+      renderWithProviders(<PictureForm />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,

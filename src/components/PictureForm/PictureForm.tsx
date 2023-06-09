@@ -1,9 +1,9 @@
 import Button from "../Button/Button";
-import CardFormStyled from "./CardFormStyled";
+import PictureFormStyled from "./PictureFormStyled";
 
-const CardForm = (): React.ReactElement => {
+const PictureForm = (): React.ReactElement => {
   return (
-    <CardFormStyled>
+    <PictureFormStyled>
       <form autoComplete="off" className="form">
         <h2 className="title-form">Create your own story</h2>
         <label htmlFor="image">Image* :</label>
@@ -94,8 +94,8 @@ const CardForm = (): React.ReactElement => {
         <textarea id="description" name="description" required />
         <Button className={"create-button"} text="Add story" />
       </form>
-    </CardFormStyled>
+    </PictureFormStyled>
   );
 };
 
-export default CardForm;
+export default PictureForm;

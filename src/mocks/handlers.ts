@@ -24,6 +24,13 @@ export const handlers = [
       ctx.json(`${feedbackMessages.isOk} ${actionMessage.deleted}`)
     );
   }),
+
+  rest.post(`${apiUrl}${path.pictures}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({ picture: picturesMock.pictures[0] })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -36,6 +43,13 @@ export const errorHandlers = [
   }),
 
   rest.delete(`${apiUrl}${path.pictures}/:id`, (_req, res, ctx) => {
+    return res(
+      ctx.status(404),
+      ctx.json(`${feedbackMessages.isNotOk} ${actionMessage.deleted}`)
+    );
+  }),
+
+  rest.post(`${apiUrl}${path.pictures}`, (_req, res, ctx) => {
     return res(ctx.status(404));
   }),
 ];

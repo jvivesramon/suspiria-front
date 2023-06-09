@@ -1,10 +1,10 @@
-import CardForm from "../../components/CardForm/CardForm";
+import PictureForm from "../../components/PictureForm/PictureForm";
 import FormPageStyled from "./FormPageStyled";
 
 const FormPage = (): React.ReactElement => {
   return (
     <FormPageStyled>
-      <CardForm />
+      <PictureForm />
     </FormPageStyled>
   );
 };
