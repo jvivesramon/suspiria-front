@@ -1,3 +1,4 @@
+import { PictureCardStructure } from "../../types";
 import { PicturesListStructure } from "../../types";
 
 export const emptyPicturesMock: PicturesListStructure = {
@@ -60,4 +61,8 @@ export const picturesMock: PicturesListStructure = {
       user: "1234",
     },
   ],
+};
+
+export const initialCardState: PictureCardStructure = {
+  ...emptyPicturesMock.pictures[0],
 };
