@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../store";
+import Pagination from "../Pagination/Pagination";
 import PictureCard from "../PictureCard/PictureCard";
 import PicturesListStyled from "./PicturesListStyled";
 
@@ -16,6 +17,7 @@ const PicturesList = (): React.ReactElement => {
           </li>
         ))}
       </ul>
+      <Pagination />
     </PicturesListStyled>
   );
 };
