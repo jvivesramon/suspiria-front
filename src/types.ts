@@ -1,25 +1,25 @@
 export interface PictureCardStructure {
   id: string;
   pictureData: {
-    title: string;
-    creationDate: string;
-    author: string;
-    movement: string;
+    title?: string;
+    creationDate?: string;
+    author?: string;
+    movement?: string;
   };
   image: string;
   description: string;
   temperatureColor: {
-    warm: boolean;
-    cold: boolean;
-    mixed: boolean;
+    warm?: boolean;
+    cold?: boolean;
+    mixed?: boolean;
   };
   colors: {
-    colorFirst: string;
-    colorSecond: string;
-    colorThird: string;
-    colorFourth: string;
-    colorFive: string;
-    colorSixth: string;
+    colorFirst?: string;
+    colorSecond?: string;
+    colorThird?: string;
+    colorFourth?: string;
+    colorFifth?: string;
+    colorSixth?: string;
   };
   user: string;
 }
