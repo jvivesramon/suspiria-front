@@ -40,7 +40,7 @@ const PictureCard = ({
       <ul className="card-colors">
         {colors.map(
           (color, index) =>
-            color && (
+            color.length > 3 && (
               <li
                 key={index}
                 className={`card-color`}

@@ -76,7 +76,7 @@ const PictureFormStyled = styled.div`
         }
       }
 
-      .first-color {
+      .container-picked-color {
         width: 25px;
         height: 25px;
         position: absolute;

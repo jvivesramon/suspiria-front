@@ -91,7 +91,18 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    onSubmit(pictureState);
+    onSubmit({
+      ...pictureState,
+      colors: {
+        ...pictureState.colors,
+        colorFirst: `#${pictureState.colors?.colorFirst}`,
+        colorSecond: `#${pictureState.colors?.colorSecond}`,
+        colorThird: `#${pictureState.colors?.colorThird}`,
+        colorFourth: `#${pictureState.colors?.colorFourth}`,
+        colorFifth: `#${pictureState.colors?.colorFifth}`,
+        colorSixth: `#${pictureState.colors?.colorSixth}`,
+      },
+    });
     setPictureState(initialPictureState);
   };
 
@@ -180,7 +191,14 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
             maxLength={6}
           />
           <span>#</span>
-          <div className="first-color" />
+          <div
+            className="container-picked-color"
+            style={
+              pictureState.colors?.colorFirst
+                ? { backgroundColor: `#${pictureState.colors?.colorFirst}` }
+                : { backgroundColor: "rgb(255 255 255 / 0%)" }
+            }
+          />
         </div>
 
         <label htmlFor="colorSecond">Second color* :</label>
@@ -195,6 +213,14 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
             maxLength={6}
           />
           <span>#</span>
+          <div
+            className="container-picked-color"
+            style={
+              pictureState.colors?.colorSecond
+                ? { backgroundColor: `#${pictureState.colors?.colorSecond}` }
+                : { backgroundColor: "rgb(255 255 255 / 0%)" }
+            }
+          />
         </div>
 
         <label htmlFor="colorThird">Third color* :</label>
@@ -208,6 +234,14 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
             maxLength={6}
           />
           <span>#</span>
+          <div
+            className="container-picked-color"
+            style={
+              pictureState.colors?.colorThird
+                ? { backgroundColor: `#${pictureState.colors?.colorThird}` }
+                : { backgroundColor: "rgb(255 255 255 / 0%)" }
+            }
+          />
         </div>
 
         <label htmlFor="colorFourth">Fourth color:</label>
@@ -221,6 +255,14 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
             maxLength={6}
           />
           <span>#</span>
+          <div
+            className="container-picked-color"
+            style={
+              pictureState.colors?.colorFourth
+                ? { backgroundColor: `#${pictureState.colors?.colorFourth}` }
+                : { backgroundColor: "rgb(255 255 255 / 0%)" }
+            }
+          />
         </div>
 
         <label htmlFor="colorFifth">Fifth color:</label>
@@ -234,6 +276,14 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
             maxLength={6}
           />
           <span>#</span>
+          <div
+            className="container-picked-color"
+            style={
+              pictureState.colors?.colorFifth
+                ? { backgroundColor: `#${pictureState.colors?.colorFifth}` }
+                : { backgroundColor: "rgb(255 255 255 / 0%)" }
+            }
+          />
         </div>
 
         <label htmlFor="colorSixth">Sixth color:</label>
@@ -247,6 +297,14 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
             maxLength={6}
           />
           <span>#</span>
+          <div
+            className="container-picked-color"
+            style={
+              pictureState.colors?.colorSixth
+                ? { backgroundColor: `#${pictureState.colors?.colorSixth}` }
+                : { backgroundColor: "rgb(255 255 255 / 0%)" }
+            }
+          />
         </div>
 
         <label htmlFor="description">Description* :</label>
