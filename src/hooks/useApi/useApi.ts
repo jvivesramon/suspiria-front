@@ -82,7 +82,10 @@ const useApi = () => {
         data: { picture },
       } = await axios.post<{ picture: PictureCardStructure }>(
         `${apiUrl}${path.pictures}`,
-        newPicture
+        { picture: newPicture },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
       dispatch(hideLoadingActionCreator());

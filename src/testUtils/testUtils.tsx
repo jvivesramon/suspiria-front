@@ -7,6 +7,7 @@ import theme from "../styles/theme/theme";
 import { Provider } from "react-redux";
 import { render } from "@testing-library/react";
 import GlobalStyle from "../styles/GlobalStyle";
+import path from "../routers/paths/paths";
 
 export const renderWithProviders = (
   ui: React.ReactElement,
@@ -30,6 +31,10 @@ export const wrapWithRouter = (ui: React.ReactElement) => {
   const routes = [
     {
       path: "/",
+      element: ui,
+    },
+    {
+      path: path.homeCollection,
       element: ui,
     },
   ];

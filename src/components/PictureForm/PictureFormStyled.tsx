@@ -75,6 +75,14 @@ const PictureFormStyled = styled.div`
           outline: 2px solid ${(props) => props.theme.colors.tertiary};
         }
       }
+
+      .first-color {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        right: 10px;
+        top: 19px;
+      }
     }
 
     .create-button {
