@@ -27,3 +27,7 @@ export interface PictureCardStructure {
 export interface PicturesListStructure {
   pictures: PictureCardStructure[];
 }
+
+export interface PictureTotalList extends PicturesListStructure {
+  totalPictures: number;
+}

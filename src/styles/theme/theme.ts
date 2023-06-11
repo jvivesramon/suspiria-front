@@ -7,6 +7,7 @@ const theme: DefaultTheme = {
     primary: "#2f2f35",
     secondary: "#242428",
     tertiary: "#eda82c",
+    brightGrey: "#8c8888",
     white: "#fff",
     black: "#000",
     logo: "#45a0e0",

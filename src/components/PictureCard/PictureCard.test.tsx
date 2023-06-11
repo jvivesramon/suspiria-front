@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "../../testUtils/testUtils";
-import { picturesMock } from "../../mocks/mocks/picturesMock";
+import { pictureTotalData, picturesMock } from "../../mocks/mocks/picturesMock";
 import PictureCard from "./PictureCard";
 
 describe("Given a PictureCard component", () => {
@@ -11,9 +11,9 @@ describe("Given a PictureCard component", () => {
   describe("When it is rendered", () => {
     test("Then it should show picture card with its title", () => {
       renderWithProviders(
-        <PictureCard picture={picturesMock.pictures[0]} userId={id} />,
+        <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />,
         {
-          picturesStore: picturesMock,
+          picturesStore: pictureTotalData,
         }
       );
 
@@ -30,9 +30,9 @@ describe("Given a PictureCard component", () => {
       const buttonText = "delete icon";
 
       renderWithProviders(
-        <PictureCard picture={picturesMock.pictures[0]} userId={id} />,
+        <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />,
         {
-          picturesStore: picturesMock,
+          picturesStore: pictureTotalData,
         }
       );
 

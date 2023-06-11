@@ -24,6 +24,12 @@ const PictureFormStyled = styled.div`
       background-color: ${(props) => props.theme.colors.primary};
     }
 
+    &__info {
+      color: ${(props) => props.theme.colors.brightGrey};
+      font-size: ${(props) => props.theme.size.text};
+      font-family: ${(props) => props.theme.fonts.primary};
+    }
+
     & > textarea {
       padding: 15px 10px;
       margin-bottom: 40px;

@@ -1,11 +1,35 @@
 import Button from "../Button/Button";
 import PaginationStyled from "./PaginationStyled";
 
-const Pagination = (): React.ReactElement => {
+interface PaginationProps {
+  onClickNext: () => void;
+  onClickPrevious: () => void;
+  isNextDisabled: boolean;
+  isPreviousDisabled: boolean;
+}
+
+const Pagination = ({
+  onClickNext,
+  onClickPrevious,
+  isNextDisabled,
+  isPreviousDisabled,
+}: PaginationProps): React.ReactElement => {
   return (
     <PaginationStyled>
-      <Button className="paganation-button" text="Previous" />
-      <Button className="paganation-button" text="Next" />
+      {!isPreviousDisabled && (
+        <Button
+          className="pagination-button"
+          text="Previous"
+          actionOnClick={onClickPrevious}
+        />
+      )}
+      {!isNextDisabled && (
+        <Button
+          actionOnClick={onClickNext}
+          className="pagination-button"
+          text="Next"
+        />
+      )}
     </PaginationStyled>
   );
 };

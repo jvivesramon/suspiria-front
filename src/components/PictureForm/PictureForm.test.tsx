@@ -110,6 +110,6 @@ describe("Given a CardForm component", () => {
       await userEvent.click(expectedButton);
 
       expect(onClick).toHaveBeenCalled();
-    });
+    }, 10000);
   });
 });

@@ -1,5 +1,9 @@
 import { renderHook, screen } from "@testing-library/react";
-import { addPictureMock, picturesMock } from "../../mocks/mocks/picturesMock";
+import {
+  addPictureMock,
+  pictureTotalData,
+  picturesMock,
+} from "../../mocks/mocks/picturesMock";
 import useApi from "./useApi";
 import {
   renderWithProviders,
@@ -12,7 +16,8 @@ import Layout from "../../components/Layout/Layout";
 describe("Given a getPictures function", () => {
   describe("When it is called", () => {
     test("Then it should return a list of pictures", async () => {
-      const { pictures } = picturesMock;
+      const pictures = pictureTotalData;
+      const skip = 3;
 
       const {
         result: {
@@ -20,7 +25,7 @@ describe("Given a getPictures function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      const picturesList = await getPictures();
+      const picturesList = await getPictures(skip);
 
       expect(picturesList).toStrictEqual(pictures);
     });
@@ -30,13 +35,15 @@ describe("Given a getPictures function", () => {
     test("Then it should rejects and throw an 'Sorry, we couldn't get the stories' error message", () => {
       server.resetHandlers(...errorHandlers);
 
+      const skip = 1;
+
       const {
         result: {
           current: { getPictures },
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      const thrownError = async () => await getPictures();
+      const thrownError = async () => await getPictures(skip);
 
       expect(thrownError).rejects.toThrowError();
     });

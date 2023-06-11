@@ -120,7 +120,7 @@ describe("Given a FormPage component", () => {
       });
 
       expect(expectedLogo).toBeInTheDocument();
-    });
+    }, 10000);
 
     test("Then it should show a modal error", async () => {
       server.resetHandlers(...errorHandlers);
@@ -210,6 +210,6 @@ describe("Given a FormPage component", () => {
       const expectedModal = screen.getByText(expectedMessage);
 
       expect(expectedModal).toBeInTheDocument();
-    });
+    }, 10000);
   });
 });

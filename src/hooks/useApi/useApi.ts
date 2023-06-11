@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { PictureCardStructure } from "../../types";
+import { PictureCardStructure, PictureTotalList } from "../../types";
 import path from "../../routers/paths/paths";
 import { useCallback } from "react";
 import {
@@ -18,30 +18,36 @@ const useApi = () => {
 
   const dispatch = useAppDispatch();
 
-  const getPictures = useCallback(async (): Promise<PictureCardStructure[]> => {
-    try {
-      dispatch(showLoadingActionCreator());
+  const getPictures = useCallback(
+    async (page: number) => {
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const {
-        data: { pictures },
-      } = await axios.get(`${apiUrl}${path.pictures}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(hideLoadingActionCreator());
-      return pictures;
-    } catch {
-      dispatch(hideLoadingActionCreator());
+        const {
+          data: { pictures, totalPictures },
+        } = await axios.get<PictureTotalList>(
+          `${apiUrl}${path.pictures}?limit=6&skip=${page}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        dispatch(hideLoadingActionCreator());
+        return { pictures, totalPictures };
+      } catch {
+        dispatch(hideLoadingActionCreator());
 
-      dispatch(
-        showModalActionCreator({
-          isError: true,
-          modalActionText: feedbackMessages.errorPictures,
-        })
-      );
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modalActionText: feedbackMessages.errorPictures,
+          })
+        );
 
-      throw new Error("Sorry, we couldn't get the stories");
-    }
-  }, [token, dispatch]);
+        throw new Error("Sorry, we couldn't get the stories");
+      }
+    },
+    [token, dispatch]
+  );
 
   const deletePicture = async (pictureId: string) => {
     try {
