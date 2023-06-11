@@ -12,6 +12,7 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       tertiary: string;
+      brightGrey: string;
       white: string;
       black: string;
       logo: string;
