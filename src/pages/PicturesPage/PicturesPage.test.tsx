@@ -21,7 +21,7 @@ describe("Given a PicturesPage page", () => {
   });
 
   describe("When the user clicks on the 'Previous' button", () => {
-    test("Then it should show the next picture's page", async () => {
+    test("Then it should show the next picture's page with the 'Next' button visible", async () => {
       server.resetHandlers(...paginationHandlers);
 
       const nextButtonText = "Next";
