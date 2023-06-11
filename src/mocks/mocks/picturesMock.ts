@@ -120,7 +120,7 @@ export const picturesMock: PicturesListStructure = {
 
 export const pictureTotalData: PictureTotalList = {
   ...picturesMock,
-  totalPictures: 8,
+  totalPictures: 3,
 };
 
 export const initialCardState: PictureCardStructure = {
