@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { loadPicturesActionCreator } from "../../store/pictures/picturesSlice";
 import PicturesPageStyled from "./PicturesPageStyled";
 import Pagination from "../../components/Pagination/Pagination";
+import PicturesFilter from "../../components/PicturesFilter/PicturesFilter";
 
 const PicturesPage = (): React.ReactElement => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -46,6 +47,7 @@ const PicturesPage = (): React.ReactElement => {
           loading="lazy"
         />
       </div>
+      <PicturesFilter />
       <PicturesList />
 
       <span className="total-info">{`${currentPage + 1}/${totalPages}`}</span>

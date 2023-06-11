@@ -1,10 +1,9 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import { renderWithProviders } from "../../testUtils/testUtils";
 import PicturesPage from "./PicturesPage";
 import { server } from "../../mocks/server";
 import { paginationHandlers } from "../../mocks/handlers";
-import { pictureTotalData } from "../../mocks/mocks/picturesMock";
 
 describe("Given a PicturesPage page", () => {
   describe("When it is rendered", () => {
@@ -28,9 +27,7 @@ describe("Given a PicturesPage page", () => {
       const nextButtonText = "Next";
       const previousButtonText = "Previous";
 
-      renderWithProviders(wrapWithRouter(<PicturesPage />), {
-        picturesStore: pictureTotalData,
-      });
+      renderWithProviders(<PicturesPage />);
 
       const expectedNextButton = screen.getByRole("button", {
         name: nextButtonText,
