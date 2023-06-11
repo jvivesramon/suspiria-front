@@ -5,8 +5,9 @@ const PaginationStyled = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  margin-bottom: 40px;
 
-  .paganation-button {
+  .pagination-button {
     min-width: 280px;
     color: ${(props) => props.theme.colors.white};
     background-color: ${(state) => state.theme.colors.primary};

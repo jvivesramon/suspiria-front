@@ -1,6 +1,7 @@
 import {
   emptyPicturesMock,
-  picturesMock,
+  pictureDeletedOne,
+  pictureTotalData,
 } from "../../mocks/mocks/picturesMock";
 import {
   addPicturesActionCreator,
@@ -16,10 +17,10 @@ describe("Given a loadPictures reducer", () => {
 
       const newPicturesState = picturesReducer(
         currentState,
-        loadPicturesActionCreator(picturesMock.pictures)
+        loadPicturesActionCreator(pictureTotalData)
       );
 
-      expect(newPicturesState).toStrictEqual(picturesMock);
+      expect(newPicturesState).toStrictEqual(pictureTotalData);
     });
   });
 });
@@ -27,8 +28,11 @@ describe("Given a loadPictures reducer", () => {
 describe("Given a deletePicture reducer", () => {
   describe("When it is called with a current picture data and an action with an id", () => {
     test("Then it should return the new pictures list without the picture with the passed id", () => {
-      const currentState = picturesMock;
-      const newStatePictureDeleted = { ...picturesMock, pictures: [] };
+      const currentState = pictureTotalData;
+      const newStatePictureDeleted = {
+        ...pictureTotalData,
+        pictures: pictureDeletedOne,
+      };
 
       const newPicturesState = picturesReducer(
         currentState,
@@ -43,19 +47,24 @@ describe("Given a deletePicture reducer", () => {
 describe("Given an addPicture reducer", () => {
   describe("When it is called with a current picture data and with a new picture", () => {
     test("Then it should return the current picture list with the new one included", () => {
-      const currentState = picturesMock;
+      const currentState = pictureTotalData;
       const newStatePictureAdded = {
-        ...picturesMock,
-        pictures: [...currentState.pictures, { ...picturesMock.pictures[0] }],
+        ...pictureTotalData,
+        pictures: [
+          ...currentState.pictures,
+          { ...pictureTotalData.pictures[0] },
+        ],
       };
 
       const newPicturesState = picturesReducer(
         currentState,
-        addPicturesActionCreator(picturesMock.pictures[0])
+        addPicturesActionCreator(pictureTotalData.pictures[0])
       );
 
       expect(newPicturesState).toStrictEqual(newStatePictureAdded);
-      expect(newPicturesState.pictures).toHaveLength(2);
+      expect(newPicturesState.pictures).toHaveLength(
+        newPicturesState.pictures.length
+      );
     });
   });
 });

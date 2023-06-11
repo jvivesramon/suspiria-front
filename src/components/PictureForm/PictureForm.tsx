@@ -122,6 +122,8 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
       <form autoComplete="off" className="form" onSubmit={handleOnSubmit}>
         <h2 className="title-form">Create your own story</h2>
 
+        <span className="form__info">* Complete all required fields</span>
+
         <label htmlFor="image">Image* :</label>
         <input
           type="url"

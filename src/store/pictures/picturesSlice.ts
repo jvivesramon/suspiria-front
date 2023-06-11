@@ -1,8 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PictureCardStructure, PicturesListStructure } from "../../types";
+import { PictureCardStructure, PictureTotalList } from "../../types";
 
-const initialUserState: PicturesListStructure = {
+const initialUserState: PictureTotalList = {
   pictures: [],
+  totalPictures: 0,
 };
 
 const picturesSlice = createSlice({
@@ -10,14 +11,14 @@ const picturesSlice = createSlice({
   initialState: initialUserState,
   reducers: {
     loadPictures: (
-      currentState: PicturesListStructure,
-      action: PayloadAction<PictureCardStructure[]>
+      _currentState: PictureTotalList,
+      action: PayloadAction<PictureTotalList>
     ) => ({
-      ...currentState,
-      pictures: [...action.payload],
+      ...action.payload,
+      pictures: [...action.payload.pictures],
     }),
     deletePicture: (
-      currentState: PicturesListStructure,
+      currentState: PictureTotalList,
       action: PayloadAction<string>
     ) => ({
       ...currentState,
@@ -26,7 +27,7 @@ const picturesSlice = createSlice({
       ),
     }),
     addPictures: (
-      currentState: PicturesListStructure,
+      currentState: PictureTotalList,
       action: PayloadAction<PictureCardStructure>
     ) => ({
       ...currentState,
