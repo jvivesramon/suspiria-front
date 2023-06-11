@@ -53,3 +53,19 @@ export const errorHandlers = [
     return res(ctx.status(404));
   }),
 ];
+
+export const paginationHandlers = [
+  rest.get(`${apiUrl}${path.pictures}`, (req, res, ctx) => {
+    const searchParams = req.url.searchParams;
+    searchParams.set("skip", "1");
+    searchParams.set("limit", "1");
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        pictures: pictureTotalData.pictures,
+        totalPictures: pictureTotalData.totalPictures,
+      })
+    );
+  }),
+];
