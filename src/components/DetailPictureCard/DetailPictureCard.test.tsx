@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { picturesMock } from "../../mocks/mocks/picturesMock";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import DetailPictureCard from "./DetailPictureCard";
 
 describe("Given a DetailPicturePage page", () => {
@@ -18,7 +18,9 @@ describe("Given a DetailPicturePage page", () => {
       const expectedTitle = "Girl with Pearl Earring";
 
       renderWithProviders(
-        <DetailPictureCard userId={userId} picture={store.pictureId} />
+        wrapWithRouter(
+          <DetailPictureCard userId={userId} picture={store.pictureId} />
+        )
       );
 
       const expectedTitleImage = screen.getByRole("heading", {
@@ -43,7 +45,7 @@ describe("Given a DetailPicturePage page", () => {
       const expectedText = "Warm";
 
       renderWithProviders(
-        <DetailPictureCard userId={userId} picture={store} />
+        wrapWithRouter(<DetailPictureCard userId={userId} picture={store} />)
       );
 
       const expectedTemperatureText = screen.getByText(expectedText);
@@ -66,7 +68,7 @@ describe("Given a DetailPicturePage page", () => {
       const expectedText = "Cold";
 
       renderWithProviders(
-        <DetailPictureCard userId={userId} picture={store} />
+        wrapWithRouter(<DetailPictureCard userId={userId} picture={store} />)
       );
 
       const expectedTemperatureText = screen.getByText(expectedText);
@@ -89,7 +91,7 @@ describe("Given a DetailPicturePage page", () => {
       const expectedText = "Mixed";
 
       renderWithProviders(
-        <DetailPictureCard userId={userId} picture={store} />
+        wrapWithRouter(<DetailPictureCard userId={userId} picture={store} />)
       );
 
       const expectedTemperatureText = screen.getByText(expectedText);
@@ -111,7 +113,9 @@ describe("Given a DetailPicturePage page", () => {
       const expectedButton = "delete icon";
 
       renderWithProviders(
-        <DetailPictureCard userId={userId} picture={store.pictureId} />
+        wrapWithRouter(
+          <DetailPictureCard userId={userId} picture={store.pictureId} />
+        )
       );
 
       const expectedDeleteButton = screen.getByRole("button", {

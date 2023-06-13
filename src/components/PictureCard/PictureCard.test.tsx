@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import { pictureTotalData, picturesMock } from "../../mocks/mocks/picturesMock";
 import PictureCard from "./PictureCard";
 
@@ -11,7 +11,9 @@ describe("Given a PictureCard component", () => {
   describe("When it is rendered", () => {
     test("Then it should show picture card with its title", () => {
       renderWithProviders(
-        <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />,
+        wrapWithRouter(
+          <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />
+        ),
         {
           picturesStore: pictureTotalData,
         }
@@ -25,12 +27,33 @@ describe("Given a PictureCard component", () => {
     });
   });
 
+  describe("When the user clicks on the cards", () => {
+    test("Then it should show the picture card with its details", async () => {
+      renderWithProviders(
+        wrapWithRouter(
+          <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />
+        ),
+        {
+          picturesStore: pictureTotalData,
+        }
+      );
+
+      const expectedCard = screen.getByLabelText("detail-card");
+
+      await userEvent.click(expectedCard);
+
+      expect(expectedCard).not.toBeInTheDocument();
+    });
+  });
+
   describe("When the user clicks on the delete button", () => {
     test("Then it should delete the card", async () => {
       const buttonText = "delete icon";
 
       renderWithProviders(
-        <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />,
+        wrapWithRouter(
+          <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />
+        ),
         {
           picturesStore: pictureTotalData,
         }

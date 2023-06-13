@@ -27,7 +27,7 @@ const Modal = ({
       <div className="feedback-container">
         <Button className="button-feedback" actionOnClick={onCloseHandle}>
           <img
-            src="images/feedback/close.svg"
+            src="/images/feedback/close.svg"
             alt="button to close the feedback"
             width="20"
             height="20"
@@ -36,7 +36,7 @@ const Modal = ({
         </Button>
         {isError ? (
           <img
-            src="images/feedback/error.svg"
+            src="/images/feedback/error.svg"
             alt="icon for error"
             width="28"
             height="28"
@@ -44,7 +44,7 @@ const Modal = ({
           />
         ) : (
           <img
-            src="images/feedback/ok.svg"
+            src="/images/feedback/ok.svg"
             alt="icon for everything ok"
             width="30"
             height="26"

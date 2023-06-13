@@ -6,6 +6,7 @@ interface PathsStructure {
   homeCollection: string;
   form: string;
   errorPage: string;
+  detailPage: string;
 }
 
 export default PathsStructure;

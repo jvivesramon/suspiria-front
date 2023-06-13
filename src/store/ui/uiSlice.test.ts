@@ -4,6 +4,7 @@ import { feedbackMessages } from "../../utils/feedbackMessages/feedbackMessages"
 import {
   hideLoadingActionCreator,
   hideModalActionCreator,
+  paginationActionCreator,
   showLoadingActionCreator,
   showModalActionCreator,
   uiReducer,
@@ -79,6 +80,27 @@ describe("Given a hideModal reducer", () => {
       );
 
       expect(newExpectedModalState).toStrictEqual(newModalState);
+    });
+  });
+});
+
+describe("Given a pagination reducer", () => {
+  describe("When it is called", () => {
+    test("Then it should return the new pagination state", () => {
+      const newPaginationState = {
+        ...uiStoreMock,
+        pagination: {
+          ...uiStoreMock.pagination,
+          skip: 2,
+        },
+      };
+
+      const newExpectedPaginationState = uiReducer(
+        uiStoreMock,
+        paginationActionCreator(2)
+      );
+
+      expect(newExpectedPaginationState).toStrictEqual(newPaginationState);
     });
   });
 });

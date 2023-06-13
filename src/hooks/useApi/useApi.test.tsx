@@ -152,15 +152,17 @@ describe("Given an getOnePicture function", () => {
       test("Then it should a modal with the message error 'Your story couldn't been found'", async () => {
         server.resetHandlers(...errorHandlers);
 
+        const error = new Error("Couldn't find the picture");
+
         const {
           result: {
-            current: { addPicture },
+            current: { getOnePicture },
           },
         } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-        const thrownError = async () => await addPicture({ ...addPictureMock });
+        const thrownError = async () => getOnePicture("1");
 
-        expect(thrownError).rejects.toThrowError();
+        expect(thrownError).rejects.toThrowError(error);
       });
     });
   });

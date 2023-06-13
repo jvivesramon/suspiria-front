@@ -9,6 +9,10 @@ const uiState: UiSliceStructure = {
     modalActionText: "",
     text: "",
   },
+  pagination: {
+    limit: 6,
+    skip: 0,
+  },
 };
 
 const uiSlice = createSlice({
@@ -36,6 +40,16 @@ const uiSlice = createSlice({
       isVisible: false,
       modalState: uiState.modalState,
     }),
+    pagination: (
+      currentState: UiSliceStructure,
+      action: PayloadAction<number>
+    ) => ({
+      ...currentState,
+      pagination: {
+        ...currentState.pagination,
+        skip: action.payload,
+      },
+    }),
   },
 });
 
@@ -44,6 +58,7 @@ export const {
   hideLoading: hideLoadingActionCreator,
   showModal: showModalActionCreator,
   hideModal: hideModalActionCreator,
+  pagination: paginationActionCreator,
 } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;

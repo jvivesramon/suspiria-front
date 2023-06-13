@@ -1,9 +1,16 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PictureCardStructure, PictureTotalList } from "../../types";
+import {
+  PictureActionDataStructure,
+  PictureCardStructure,
+  PictureTotalList,
+} from "../../types";
+import { emptyPicturesData } from "../../mocks/mocks/picturesMock";
 
-const initialUserState: PictureTotalList = {
+const initialUserState: PictureActionDataStructure = {
   pictures: [],
   totalPictures: 0,
+  filterData: "",
+  pictureId: emptyPicturesData,
 };
 
 const picturesSlice = createSlice({
@@ -11,14 +18,15 @@ const picturesSlice = createSlice({
   initialState: initialUserState,
   reducers: {
     loadPictures: (
-      _currentState: PictureTotalList,
+      currentState: PictureActionDataStructure,
       action: PayloadAction<PictureTotalList>
     ) => ({
-      ...action.payload,
+      ...currentState,
       pictures: [...action.payload.pictures],
+      totalPictures: action.payload.totalPictures,
     }),
     deletePicture: (
-      currentState: PictureTotalList,
+      currentState: PictureActionDataStructure,
       action: PayloadAction<string>
     ) => ({
       ...currentState,
@@ -27,11 +35,25 @@ const picturesSlice = createSlice({
       ),
     }),
     addPictures: (
-      currentState: PictureTotalList,
+      currentState: PictureActionDataStructure,
       action: PayloadAction<PictureCardStructure>
     ) => ({
       ...currentState,
       pictures: [...currentState.pictures, { ...action.payload }],
+    }),
+    addFilter: (
+      currentState: PictureActionDataStructure,
+      action: PayloadAction<string>
+    ) => ({
+      ...currentState,
+      filterData: action.payload,
+    }),
+    loadPictureId: (
+      currentState: PictureActionDataStructure,
+      action: PayloadAction<PictureCardStructure>
+    ) => ({
+      ...currentState,
+      pictureId: { ...action.payload },
     }),
   },
 });
@@ -40,5 +62,7 @@ export const {
   loadPictures: loadPicturesActionCreator,
   deletePicture: deletePictureActionCreator,
   addPictures: addPicturesActionCreator,
+  addFilter: addFilterActionCreator,
+  loadPictureId: loadPictureIdActionCreator,
 } = picturesSlice.actions;
 export const picturesReducer = picturesSlice.reducer;

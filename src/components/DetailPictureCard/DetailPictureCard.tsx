@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi/useApi";
 import { useAppDispatch } from "../../store";
 import {
@@ -8,6 +9,7 @@ import { paginationActionCreator } from "../../store/ui/uiSlice";
 import { PictureCardStructure } from "../../types";
 import Button from "../Button/Button";
 import DetailPictureCardStyled from "./DetailPictureCardStyled";
+import path from "../../routers/paths/paths";
 
 interface DetailPictureCardProps {
   picture: PictureCardStructure;
@@ -20,6 +22,7 @@ const DetailPictureCard = ({
 }: DetailPictureCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { deletePicture } = useApi();
+  const navigate = useNavigate();
 
   const {
     user,
@@ -39,6 +42,8 @@ const DetailPictureCard = ({
 
     dispatch(paginationActionCreator(0));
     dispatch(addFilterActionCreator(""));
+
+    navigate(path.homeCollection);
   };
 
   return (

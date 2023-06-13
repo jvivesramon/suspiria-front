@@ -61,7 +61,7 @@ export const errorHandlers = [
   }),
 
   rest.get(`${apiUrl}${path.pictures}/:id`, (_req, res, ctx) => {
-    return res(ctx.status(404));
+    return res(ctx.status(404), ctx.json("Couldn't find the picture"));
   }),
 ];
 

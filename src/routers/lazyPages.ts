@@ -11,3 +11,7 @@ export const LazyNotFoundPage = lazy(
 );
 
 export const LazyFormPage = lazy(() => import("../pages/FormPage/FormPage"));
+
+export const LazyDetailCardPage = lazy(
+  () => import("../pages/DetailPicturePage/DetailPicturePage")
+);

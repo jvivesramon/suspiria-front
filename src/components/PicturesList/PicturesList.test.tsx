@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import PicturesList from "./PicturesList";
 import { pictureTotalData } from "../../mocks/mocks/picturesMock";
 
@@ -8,7 +8,7 @@ describe("Given a PicturesList component", () => {
     test("Then it should show one picture card with its title", () => {
       const title = pictureTotalData.pictures[0].pictureData.title;
 
-      renderWithProviders(<PicturesList />, {
+      renderWithProviders(wrapWithRouter(<PicturesList />), {
         picturesStore: pictureTotalData,
       });
 

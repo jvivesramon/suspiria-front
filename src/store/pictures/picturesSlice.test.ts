@@ -1,11 +1,14 @@
 import {
   emptyPicturesMock,
+  initialPictureIdState,
   pictureDeletedOne,
   pictureTotalData,
 } from "../../mocks/mocks/picturesMock";
 import {
+  addFilterActionCreator,
   addPicturesActionCreator,
   deletePictureActionCreator,
+  loadPictureIdActionCreator,
   loadPicturesActionCreator,
   picturesReducer,
 } from "./picturesSlice";
@@ -65,6 +68,44 @@ describe("Given an addPicture reducer", () => {
       expect(newPicturesState.pictures).toHaveLength(
         newPicturesState.pictures.length
       );
+    });
+  });
+});
+
+describe("Given an addFilter reducer", () => {
+  describe("When it is called with a 'warm' key word", () => {
+    test("Then it should return the 'warm' word as the value of filterData", () => {
+      const currentState = pictureTotalData;
+      const newFilterState = {
+        ...pictureTotalData,
+        filterData: "warm",
+      };
+
+      const newPicturesState = picturesReducer(
+        currentState,
+        addFilterActionCreator("warm")
+      );
+
+      expect(newPicturesState).toStrictEqual(newFilterState);
+    });
+  });
+});
+
+describe("Given an loadPictureId reducer", () => {
+  describe("When it is called with a picture", () => {
+    test("Then it should return the picture", () => {
+      const currentState = pictureTotalData;
+      const newPictureIdState = {
+        ...pictureTotalData,
+        pictureId: initialPictureIdState,
+      };
+
+      const newPicturesState = picturesReducer(
+        currentState,
+        loadPictureIdActionCreator(initialPictureIdState)
+      );
+
+      expect(newPicturesState).toStrictEqual(newPictureIdState);
     });
   });
 });

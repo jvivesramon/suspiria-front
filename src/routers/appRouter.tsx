@@ -3,6 +3,7 @@ import App from "../components/App/App";
 import path from "./paths/paths";
 import { Suspense } from "react";
 import {
+  LazyDetailCardPage,
   LazyFormPage,
   LazyLoginPage,
   LazyNotFoundPage,
@@ -47,6 +48,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense>
             <LazyNotFoundPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${path.pictures}/:id`,
+        element: (
+          <Suspense>
+            <LazyDetailCardPage />
           </Suspense>
         ),
       },
