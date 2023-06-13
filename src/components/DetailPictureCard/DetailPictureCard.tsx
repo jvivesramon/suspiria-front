@@ -1,6 +1,10 @@
 import useApi from "../../hooks/useApi/useApi";
 import { useAppDispatch } from "../../store";
-import { deletePictureActionCreator } from "../../store/pictures/picturesSlice";
+import {
+  addFilterActionCreator,
+  deletePictureActionCreator,
+} from "../../store/pictures/picturesSlice";
+import { paginationActionCreator } from "../../store/ui/uiSlice";
 import { PictureCardStructure } from "../../types";
 import Button from "../Button/Button";
 import DetailPictureCardStyled from "./DetailPictureCardStyled";
@@ -16,13 +20,25 @@ const DetailPictureCard = ({
 }: DetailPictureCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { deletePicture } = useApi();
-  const { user, id, colors } = picture;
+
+  const {
+    user,
+    colors,
+    description,
+    image,
+    pictureData,
+    temperatureColor,
+    id,
+  } = picture;
   const mainColors = Object.values(colors);
 
   const handleOnDelete = async () => {
     dispatch(deletePictureActionCreator(id));
 
     await deletePicture(id);
+
+    dispatch(paginationActionCreator(0));
+    dispatch(addFilterActionCreator(""));
   };
 
   return (
@@ -30,22 +46,20 @@ const DetailPictureCard = ({
       <div className="data-container">
         <img
           className="image-card"
-          src={picture.image}
-          alt={`An artpiece called ${picture.pictureData.title} painted by ${picture.pictureData.author}`}
+          src={image}
+          alt={`An artpiece called ${pictureData.title} painted by ${pictureData.author}`}
           width="260"
           height="300"
           loading="lazy"
         />
         <section className="data-container__detail">
-          <h2 className="card-title">{picture.pictureData.title}</h2>
-          <span className="card-title__author">
-            {picture.pictureData.author}
-          </span>
-          <span className="card-title__creationDate">{`${picture.pictureData.creationDate} | ${picture.pictureData.movement}`}</span>
+          <h2 className="card-title">{pictureData.title}</h2>
+          <span className="card-title__author">{pictureData.author}</span>
+          <span className="card-title__creationDate">{`${pictureData.creationDate} | ${pictureData.movement}`}</span>
         </section>
       </div>
 
-      <p className="card-description">{picture.description}</p>
+      <p className="card-description">{description}</p>
 
       <span className="palette-container">Color Palette</span>
 
@@ -54,14 +68,14 @@ const DetailPictureCard = ({
           <span>Temperature color:</span>
           <span
             className={`detail-colors__temperature${
-              (picture.temperatureColor.cold && "--warm") ||
-              (picture.temperatureColor.warm && "--cold") ||
-              (picture.temperatureColor.mixed && "--mixed")
+              (temperatureColor.cold && "--cold") ||
+              (temperatureColor.warm && "--warm") ||
+              (temperatureColor.mixed && "--mixed")
             }`}
           >
-            {(picture.temperatureColor.cold && "Cold") ||
-              (picture.temperatureColor.warm && "Warm") ||
-              (picture.temperatureColor.mixed && "Mixed")}
+            {(temperatureColor.cold && "Cold") ||
+              (temperatureColor.warm && "Warm") ||
+              (temperatureColor.mixed && "Mixed")}
           </span>
         </div>
         <ul className="detail-colors__card-colors">
@@ -100,7 +114,7 @@ const DetailPictureCard = ({
         <>
           <Button className="button button__modify">
             <img
-              src="images/components/modify.svg"
+              src="/images/components/modify.svg"
               alt="modify icon"
               width="25"
               height="25"
@@ -112,7 +126,7 @@ const DetailPictureCard = ({
             actionOnClick={handleOnDelete}
           >
             <img
-              src="images/components/delete.svg"
+              src="/images/components/delete.svg"
               alt="delete icon"
               width="22"
               height="22"

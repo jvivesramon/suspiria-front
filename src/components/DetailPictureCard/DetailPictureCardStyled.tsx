@@ -6,7 +6,7 @@ const DetailPictureCardStyled = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 10px;
+  padding: 15px;
   max-width: 700px;
   box-shadow: #141414 0px 0px 10px 5px;
 
@@ -32,6 +32,7 @@ const DetailPictureCardStyled = styled.div`
       margin: 20px;
 
       &__detail {
+        max-width: 350px;
         border-left: 1px solid white;
         padding: 30px;
       }
