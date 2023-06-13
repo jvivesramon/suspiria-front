@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PicturesList from "../../components/PicturesList/PicturesList";
 import useApi from "../../hooks/useApi/useApi";
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -6,34 +6,40 @@ import { loadPicturesActionCreator } from "../../store/pictures/picturesSlice";
 import PicturesPageStyled from "./PicturesPageStyled";
 import Pagination from "../../components/Pagination/Pagination";
 import PicturesFilter from "../../components/PicturesFilter/PicturesFilter";
+import { paginationActionCreator } from "../../store/ui/uiSlice";
 
 const PicturesPage = (): React.ReactElement => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
-  const [filterState, setFilterState] = useState("");
-
-  const { totalPictures } = useAppSelector((store) => store.picturesStore);
+  const { filterData, totalPictures } = useAppSelector(
+    (store) => store.picturesStore
+  );
+  const {
+    pagination: { skip, limit },
+  } = useAppSelector((store) => store.uiStore);
 
   const dispatch = useAppDispatch();
   const { getPictures } = useApi();
 
   useEffect(() => {
     (async () => {
-      const pictures = await getPictures(currentPage, filterState);
+      const pictures = await getPictures(skip, limit, filterData);
 
-      setTotalPages(Math.round(pictures.totalPictures / 6));
-
-      dispatch(loadPicturesActionCreator(pictures));
+      if (pictures) {
+        dispatch(loadPicturesActionCreator(pictures));
+      }
     })();
-  }, [getPictures, dispatch, currentPage, filterState]);
+  }, [getPictures, dispatch, filterData, skip, limit, totalPictures]);
 
   const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
+    window.scrollTo(0, 0);
+
+    dispatch(paginationActionCreator(skip + limit));
   };
 
   const handlePreviousPage = () => {
-    if (currentPage) {
-      setCurrentPage(currentPage - 1);
+    window.scrollTo(0, 0);
+
+    if (skip) {
+      dispatch(paginationActionCreator(skip - limit));
     }
   };
 
@@ -41,27 +47,26 @@ const PicturesPage = (): React.ReactElement => {
     <PicturesPageStyled>
       <div className="page-container">
         <img
-          src="images/headerTitle/suspiria-title.svg"
+          src="/images/headerTitle/suspiria-title.svg"
           alt="Suspiria logo"
           width="144"
           height="56"
           loading="lazy"
         />
       </div>
-      <PicturesFilter
-        setCurrentPage={setCurrentPage}
-        setFilterState={setFilterState}
-      />
+      <PicturesFilter />
 
       <PicturesList />
 
-      {totalPictures > 6 && (
-        <span className="total-info">{`${currentPage + 1}/${totalPages}`}</span>
+      {totalPictures > limit && (
+        <span className="total-info">{`${skip / limit + 1}/${Math.ceil(
+          totalPictures / limit
+        )}`}</span>
       )}
 
       <Pagination
-        isNextDisabled={currentPage + 1 === totalPages || totalPictures < 6}
-        isPreviousDisabled={!currentPage}
+        isNextDisabled={(skip + 1) * limit >= totalPictures}
+        isPreviousDisabled={!skip}
         onClickNext={handleNextPage}
         onClickPrevious={handlePreviousPage}
       />
