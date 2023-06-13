@@ -31,6 +31,13 @@ export const handlers = [
       ctx.json({ picture: picturesMock.pictures[0] })
     );
   }),
+
+  rest.get(`${apiUrl}${path.pictures}/:id`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({ picture: pictureTotalData.pictureId })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -50,6 +57,10 @@ export const errorHandlers = [
   }),
 
   rest.post(`${apiUrl}${path.pictures}`, (_req, res, ctx) => {
+    return res(ctx.status(404));
+  }),
+
+  rest.get(`${apiUrl}${path.pictures}/:id`, (_req, res, ctx) => {
     return res(ctx.status(404));
   }),
 ];
