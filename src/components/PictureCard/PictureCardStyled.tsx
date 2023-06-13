@@ -7,7 +7,7 @@ const PictureCardStyled = styled.article`
   align-items: center;
   position: relative;
   padding: 10px;
-  width: 280px;
+  max-width: 280px;
   box-shadow: #141414 0px 0px 10px 5px;
 
   .image-card {

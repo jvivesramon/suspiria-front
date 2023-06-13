@@ -13,7 +13,7 @@ describe("Given a FormPage component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a 'Image* :' label and an 'Add story' button", () => {
       const buttonText = "Add story";
-      const labelImageText = "Image* :";
+      const labelImageText = "Image URL* :";
 
       renderWithProviders(wrapWithRouter(<FormPage />));
 
@@ -47,7 +47,7 @@ describe("Given a FormPage component", () => {
       const titleText = "Suspiria logo";
       const buttonText = "Add story";
 
-      const imageInputText = "Image* :";
+      const imageInputText = "Image URL* :";
       const titleInputText = "Title* :";
       const authorInputText = "Author* :";
       const yearInputText = "Year* :";
@@ -137,7 +137,7 @@ describe("Given a FormPage component", () => {
       const buttonText = "Add story";
       const expectedMessage = "created";
 
-      const imageInputText = "Image* :";
+      const imageInputText = "Image URL* :";
       const titleInputText = "Title* :";
       const authorInputText = "Author* :";
       const yearInputText = "Year* :";

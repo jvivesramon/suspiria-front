@@ -1,4 +1,4 @@
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import NotFoundPageStyled from "./NotFoundPageStyled";
 import { useNavigate } from "react-router-dom";
 import path from "../../routers/paths/paths";
@@ -13,7 +13,7 @@ const NotFoundPage = (): React.ReactElement => {
   return (
     <NotFoundPageStyled>
       <img
-        src="images/feedback/not-found-page.svg"
+        src="/images/feedback/not-found-page.svg"
         alt="not found page"
         width="290"
         height="400"

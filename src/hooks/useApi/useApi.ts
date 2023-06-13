@@ -19,19 +19,22 @@ const useApi = () => {
   const dispatch = useAppDispatch();
 
   const getPictures = useCallback(
-    async (page: number) => {
+    async (page: number, filter?: string) => {
       try {
         dispatch(showLoadingActionCreator());
 
         const {
           data: { pictures, totalPictures },
         } = await axios.get<PictureTotalList>(
-          `${apiUrl}${path.pictures}?limit=6&skip=${page}`,
+          `${apiUrl}${path.pictures}?limit=6&skip=${page}${
+            filter && `&filter=${filter}`
+          }`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
         dispatch(hideLoadingActionCreator());
+
         return { pictures, totalPictures };
       } catch {
         dispatch(hideLoadingActionCreator());

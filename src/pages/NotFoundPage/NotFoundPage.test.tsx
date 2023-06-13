@@ -8,7 +8,7 @@ import {
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
-import PicturesPage from "../../pages/PicturesPage/PicturesPage";
+import PicturesPage from "../PicturesPage/PicturesPage";
 
 describe("Given a NotFoundPage component", () => {
   describe("When it is rendered", () => {

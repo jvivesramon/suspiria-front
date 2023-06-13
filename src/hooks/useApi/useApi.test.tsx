@@ -25,7 +25,7 @@ describe("Given a getPictures function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      const picturesList = await getPictures(skip);
+      const picturesList = await getPictures(skip, "cold");
 
       expect(picturesList).toStrictEqual(pictures);
     });
@@ -43,7 +43,7 @@ describe("Given a getPictures function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      const thrownError = async () => await getPictures(skip);
+      const thrownError = async () => await getPictures(skip, "cold");
 
       expect(thrownError).rejects.toThrowError();
     });

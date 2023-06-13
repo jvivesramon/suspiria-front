@@ -10,6 +10,7 @@ import PicturesFilter from "../../components/PicturesFilter/PicturesFilter";
 const PicturesPage = (): React.ReactElement => {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [filterState, setFilterState] = useState("");
 
   const { totalPictures } = useAppSelector((store) => store.picturesStore);
 
@@ -18,13 +19,13 @@ const PicturesPage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const pictures = await getPictures(currentPage);
+      const pictures = await getPictures(currentPage, filterState);
 
       setTotalPages(Math.round(pictures.totalPictures / 6));
 
       dispatch(loadPicturesActionCreator(pictures));
     })();
-  }, [getPictures, dispatch, currentPage]);
+  }, [getPictures, dispatch, currentPage, filterState]);
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -47,13 +48,19 @@ const PicturesPage = (): React.ReactElement => {
           loading="lazy"
         />
       </div>
-      <PicturesFilter />
+      <PicturesFilter
+        setCurrentPage={setCurrentPage}
+        setFilterState={setFilterState}
+      />
+
       <PicturesList />
 
-      <span className="total-info">{`${currentPage + 1}/${totalPages}`}</span>
+      {totalPictures > 6 && (
+        <span className="total-info">{`${currentPage + 1}/${totalPages}`}</span>
+      )}
 
       <Pagination
-        isNextDisabled={Math.floor(currentPage * 6) >= totalPictures}
+        isNextDisabled={currentPage + 1 === totalPages || totalPictures < 6}
         isPreviousDisabled={!currentPage}
         onClickNext={handleNextPage}
         onClickPrevious={handlePreviousPage}
