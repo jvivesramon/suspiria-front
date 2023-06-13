@@ -1,6 +1,7 @@
 import { renderHook, screen } from "@testing-library/react";
 import {
   addPictureMock,
+  pictureApiData,
   pictureTotalData,
   picturesMock,
 } from "../../mocks/mocks/picturesMock";
@@ -16,8 +17,9 @@ import Layout from "../../components/Layout/Layout";
 describe("Given a getPictures function", () => {
   describe("When it is called", () => {
     test("Then it should return a list of pictures", async () => {
-      const pictures = pictureTotalData;
+      const pictures = pictureApiData;
       const skip = 3;
+      const limit = 3;
 
       const {
         result: {
@@ -25,7 +27,7 @@ describe("Given a getPictures function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      const picturesList = await getPictures(skip, "cold");
+      const picturesList = await getPictures(skip, limit, "cold");
 
       expect(picturesList).toStrictEqual(pictures);
     });
@@ -36,6 +38,7 @@ describe("Given a getPictures function", () => {
       server.resetHandlers(...errorHandlers);
 
       const skip = 1;
+      const limit = 1;
 
       const {
         result: {
@@ -43,7 +46,7 @@ describe("Given a getPictures function", () => {
         },
       } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
 
-      const thrownError = async () => await getPictures(skip, "cold");
+      const thrownError = async () => await getPictures(skip, limit, "cold");
 
       expect(thrownError).rejects.toThrowError();
     });
@@ -113,6 +116,40 @@ describe("Given an addPicture function", () => {
 
     describe("When it is called with an invalid picture", () => {
       test("Then it should a modal with the message error 'Your story couldn't been created'", async () => {
+        server.resetHandlers(...errorHandlers);
+
+        const {
+          result: {
+            current: { addPicture },
+          },
+        } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+        const thrownError = async () => await addPicture({ ...addPictureMock });
+
+        expect(thrownError).rejects.toThrowError();
+      });
+    });
+  });
+});
+
+describe("Given an getOnePicture function", () => {
+  describe("When it is called with a valid id", () => {
+    test("Then it should return the picture from this id", async () => {
+      server.resetHandlers(...handlers);
+
+      const {
+        result: {
+          current: { getOnePicture },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+      const expectedPicture = await getOnePicture("1");
+
+      expect(expectedPicture).toStrictEqual({ ...pictureTotalData.pictureId });
+    });
+
+    describe("When it is called with an invalid id picture", () => {
+      test("Then it should a modal with the message error 'Your story couldn't been found'", async () => {
         server.resetHandlers(...errorHandlers);
 
         const {
