@@ -11,12 +11,18 @@ const PicturesFilterStyled = styled.div`
     border-right: 1px solid white;
   }
 
+  .selected-button {
+    background-color: ${(props) => props.theme.colors.primary};
+  }
+
   & > button {
     width: 100%;
     background-color: ${(props) => props.theme.colors.black};
     color: ${(props) => props.theme.colors.white};
     font-family: ${(props) => props.theme.fonts.primary};
     font-size: ${(props) => props.theme.size.medium};
+    line-height: 30px;
+    padding: 5px;
 
     :hover {
       background-color: ${(props) => props.theme.colors.tertiary};

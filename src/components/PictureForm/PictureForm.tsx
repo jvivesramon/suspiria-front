@@ -124,7 +124,7 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
 
         <span className="form__info">* Complete all required fields</span>
 
-        <label htmlFor="image">Image* :</label>
+        <label htmlFor="image">Image URL* :</label>
         <input
           type="url"
           value={pictureState.image}

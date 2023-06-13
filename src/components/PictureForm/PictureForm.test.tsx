@@ -10,7 +10,7 @@ describe("Given a CardForm component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a 'Image* :' label and an 'Add story' button", () => {
       const buttonText = "Add story";
-      const labelImageText = "Image* :";
+      const labelImageText = "Image URL* :";
 
       renderWithProviders(wrapWithRouter(<PictureForm onSubmit={onClick} />));
 
@@ -39,7 +39,7 @@ describe("Given a CardForm component", () => {
   describe("When the user complete the fields", () => {
     test("Then it should show an 'Add story' button enabled and it should be clicked", async () => {
       const buttonText = "Add story";
-      const imageInputText = "Image* :";
+      const imageInputText = "Image URL* :";
       const titleInputText = "Title* :";
       const authorInputText = "Author* :";
       const yearInputText = "Year* :";

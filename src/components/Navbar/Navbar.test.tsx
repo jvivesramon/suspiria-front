@@ -80,7 +80,7 @@ describe("Given a Nav component", () => {
   describe("When the user is logged and clicks on the create button", () => {
     test("Then it should redirect to the FormPage", async () => {
       const buttonName = "create";
-      const labelImageText = "Image* :";
+      const labelImageText = "Image URL* :";
 
       const routes: RouteObject[] = [
         {
