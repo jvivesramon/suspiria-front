@@ -22,7 +22,7 @@ const PicturesFilterStyled = styled.div`
     font-family: ${(props) => props.theme.fonts.primary};
     font-size: ${(props) => props.theme.size.medium};
     line-height: 30px;
-    padding: 5px;
+    padding: 10px;
 
     :hover {
       background-color: ${(props) => props.theme.colors.tertiary};

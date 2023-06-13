@@ -57,37 +57,8 @@ export const errorHandlers = [
 export const paginationHandlers = [
   rest.get(`${apiUrl}${path.pictures}`, (req, res, ctx) => {
     const searchParams = req.url.searchParams;
-    searchParams.set("skip", "0");
-    searchParams.set("limit", "1");
-
-    return res(
-      ctx.status(200),
-      ctx.json({
-        pictures: pictureTotalData.pictures,
-        totalPictures: pictureTotalData.totalPictures,
-      })
-    );
-  }),
-];
-
-export const finalPageHandlers = [
-  rest.get(`${apiUrl}${path.pictures}`, (req, res, ctx) => {
-    const searchParams = req.url.searchParams;
-    searchParams.set("skip", "0");
-    searchParams.set("limit", "6");
-
-    return res(
-      ctx.status(200),
-      ctx.json({
-        pictures: pictureTotalData.pictures,
-        totalPictures: pictureTotalData.totalPictures,
-      })
-    );
-  }),
-  rest.get(`${apiUrl}${path.pictures}`, (req, res, ctx) => {
-    const searchParams = req.url.searchParams;
     searchParams.set("skip", "1");
-    searchParams.set("limit", "6");
+    searchParams.set("limit", "1");
 
     return res(
       ctx.status(200),

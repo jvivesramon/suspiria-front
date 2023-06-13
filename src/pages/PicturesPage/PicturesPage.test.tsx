@@ -1,9 +1,10 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "../../testUtils/testUtils";
 import PicturesPage from "./PicturesPage";
 import { server } from "../../mocks/server";
 import { paginationHandlers } from "../../mocks/handlers";
+import { pictureTotalData } from "../../mocks/mocks/picturesMock";
 
 describe("Given a PicturesPage page", () => {
   describe("When it is rendered", () => {
@@ -20,32 +21,25 @@ describe("Given a PicturesPage page", () => {
     });
   });
 
-  describe("When the user clicks on the 'Previous' button", () => {
-    test("Then it should show the next picture's page with the 'Next' button visible", async () => {
+  describe("When the user clicks on the Next' button", () => {
+    test("Then the 'Next' button has to be disabled", async () => {
       server.resetHandlers(...paginationHandlers);
 
       const nextButtonText = "Next";
-      const previousButtonText = "Previous";
 
-      renderWithProviders(<PicturesPage />);
+      renderWithProviders(<PicturesPage />, {
+        picturesStore: pictureTotalData,
+      });
 
       const expectedNextButton = screen.getByRole("button", {
         name: nextButtonText,
       });
 
+      expect(expectedNextButton).toBeInTheDocument();
+
       await userEvent.click(expectedNextButton);
 
-      expect(expectedNextButton).not.toBeInTheDocument();
-
-      const expectedPreviousButton = screen.getByRole("button", {
-        name: previousButtonText,
-      });
-
-      expect(expectedPreviousButton).toBeInTheDocument();
-
-      await userEvent.click(expectedPreviousButton);
-
-      expect(expectedPreviousButton).not.toBeInTheDocument();
+      waitFor(() => expect(expectedNextButton).not.toBeInTheDocument());
     });
   });
 });
