@@ -19,14 +19,14 @@ const useApi = () => {
   const dispatch = useAppDispatch();
 
   const getPictures = useCallback(
-    async (page: number, filter?: string) => {
+    async (skip: number, limit: number, filter?: string) => {
       try {
         dispatch(showLoadingActionCreator());
 
         const {
           data: { pictures, totalPictures },
         } = await axios.get<PictureTotalList>(
-          `${apiUrl}${path.pictures}?limit=6&skip=${page}${
+          `${apiUrl}${path.pictures}?limit=${limit}&skip=${skip}${
             filter && `&filter=${filter}`
           }`,
           {
@@ -123,7 +123,30 @@ const useApi = () => {
     }
   };
 
-  return { getPictures, deletePicture, addPicture };
+  const getOnePicture = useCallback(
+    async (id: string): Promise<PictureCardStructure> => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const {
+          data: { picture },
+        } = await axios.get<{
+          picture: PictureCardStructure;
+        }>(`${apiUrl}${path.pictures}/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        dispatch(hideLoadingActionCreator());
+
+        return picture;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+        throw new Error("Couldn't find the picture");
+      }
+    },
+    [dispatch, token]
+  );
+
+  return { getPictures, deletePicture, addPicture, getOnePicture };
 };
 
 export default useApi;

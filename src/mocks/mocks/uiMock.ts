@@ -9,4 +9,9 @@ export const uiStoreMock: UiSliceStructure = {
     modalActionText: "",
     text: "",
   },
+
+  pagination: {
+    skip: 0,
+    limit: 0,
+  },
 };

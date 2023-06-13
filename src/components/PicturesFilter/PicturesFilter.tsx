@@ -1,47 +1,42 @@
-import { Dispatch, SetStateAction, useState } from "react";
 import Button from "../Button/Button";
 import PicturesFilterStyled from "./PicturesFilterStyled";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { paginationActionCreator } from "../../store/ui/uiSlice";
+import { addFilterActionCreator } from "../../store/pictures/picturesSlice";
 
-interface PicturesFilterProps {
-  setCurrentPage: Dispatch<SetStateAction<number>>;
-  setFilterState: Dispatch<SetStateAction<string>>;
-}
-
-const PicturesFilter = ({
-  setFilterState,
-  setCurrentPage,
-}: PicturesFilterProps): React.ReactElement => {
-  const [selectedButton, setSelectedButton] = useState("");
+const PicturesFilter = (): React.ReactElement => {
+  const { filterData } = useAppSelector((store) => store.picturesStore);
+  const dispatch = useAppDispatch();
 
   const onChange = (temperatureColor: string) => {
-    setFilterState(temperatureColor);
-    setCurrentPage(0);
-    setSelectedButton(temperatureColor);
+    dispatch(addFilterActionCreator(temperatureColor));
+
+    dispatch(paginationActionCreator(0));
   };
 
   return (
     <PicturesFilterStyled>
       <Button
-        className={`${!selectedButton && "selected-button"}`}
+        className={`${!filterData && "selected-button"}`}
         text="All colors"
         actionOnClick={() => onChange("")}
       />
       <Button
         className={`middle-button ${
-          selectedButton === "warm" && "selected-button"
+          filterData === "warm" && "selected-button"
         }`}
         text="Warm"
         actionOnClick={() => onChange("warm")}
       />
       <Button
         className={`middle-button ${
-          selectedButton === "cold" && "selected-button"
+          filterData === "cold" && "selected-button"
         }`}
         text="Cold"
         actionOnClick={() => onChange("cold")}
       />
       <Button
-        className={`${selectedButton === "mixed" && "selected-button"}`}
+        className={`${filterData === "mixed" && "selected-button"}`}
         text="Mixed"
         actionOnClick={() => onChange("mixed")}
       />

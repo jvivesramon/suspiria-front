@@ -8,6 +8,7 @@ const path: PathsStructure = {
   homeCollection: "/home",
   form: "/form",
   errorPage: "*",
+  detailPage: "/details",
 };
 
 export default path;

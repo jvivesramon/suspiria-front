@@ -31,3 +31,8 @@ export interface PicturesListStructure {
 export interface PictureTotalList extends PicturesListStructure {
   totalPictures: number;
 }
+
+export interface PictureActionDataStructure extends PictureTotalList {
+  filterData: string;
+  pictureId: PictureCardStructure;
+}
