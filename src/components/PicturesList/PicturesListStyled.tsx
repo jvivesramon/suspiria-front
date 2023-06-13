@@ -6,7 +6,7 @@ const PicturesListStyled = styled.section`
   justify-content: center;
   width: 100%;
   gap: 20px;
-  padding: 30px;
+  padding: 20px;
 
   .cards-list {
     @media (min-width: 700px) {
