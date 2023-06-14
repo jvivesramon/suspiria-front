@@ -34,6 +34,7 @@ const DetailPictureCard = ({
     id,
   } = picture;
   const mainColors = Object.values(colors);
+  const isOwner = user === userId;
 
   const handleOnDelete = async () => {
     dispatch(deletePictureActionCreator(id));
@@ -96,8 +97,8 @@ const DetailPictureCard = ({
           )}
         </ul>
       </div>
-      <ul className="color-container">
-        <div className="colors-section">
+      <div className="color-container">
+        <ul className="colors-section">
           {mainColors.map(
             (color, index) =>
               color.length > 3 && (
@@ -112,10 +113,10 @@ const DetailPictureCard = ({
                 </li>
               )
           )}
-        </div>
-      </ul>
+        </ul>
+      </div>
 
-      {user === userId && (
+      {isOwner && (
         <>
           <Button className="button button__modify">
             <img

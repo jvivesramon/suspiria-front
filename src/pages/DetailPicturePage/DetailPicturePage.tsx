@@ -18,13 +18,9 @@ const DetailPicturePage = (): React.ReactElement => {
     (async () => {
       scrollTo(0, 0);
 
-      if (idParams) {
-        const picture = await getOnePicture(idParams);
+      const picture = await getOnePicture(idParams as string);
 
-        if (picture) {
-          dispatch(loadPictureIdActionCreator(picture));
-        }
-      }
+      dispatch(loadPictureIdActionCreator(picture));
     })();
   }, [dispatch, getOnePicture, idParams]);
 

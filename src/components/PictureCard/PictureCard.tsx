@@ -14,11 +14,13 @@ import path from "../../routers/paths/paths";
 interface PictureCardProps {
   picture: PictureCardStructure;
   userId: string;
+  position: number;
 }
 
 const PictureCard = ({
   picture,
   userId,
+  position,
 }: PictureCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { deletePicture } = useApi();
@@ -43,7 +45,7 @@ const PictureCard = ({
           alt={`An artpiece called ${picture.pictureData.title} painted by ${picture.pictureData.author}`}
           width="260"
           height="300"
-          loading="lazy"
+          loading={position > 2 ? "lazy" : "eager"}
         />
         <h2 className="card-title">{picture.pictureData.title}</h2>
       </Link>
