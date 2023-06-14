@@ -1,6 +1,31 @@
 import { PictureActionDataStructure, PictureCardStructure } from "../../types";
 import { PicturesListStructure } from "../../types";
 
+export const initialPictureState: Partial<PictureCardStructure> = {
+  pictureData: {
+    title: "",
+    creationDate: "",
+    author: "",
+    movement: "",
+  },
+  image: "",
+  description: "",
+  temperatureColor: {
+    warm: false,
+    cold: false,
+    mixed: false,
+  },
+  colors: {
+    colorFirst: "",
+    colorSecond: "",
+    colorThird: "",
+    colorFourth: "",
+    colorFifth: "",
+    colorSixth: "",
+  },
+  user: "1",
+};
+
 export const emptyPicturesData: PictureCardStructure = {
   id: "",
   pictureData: {

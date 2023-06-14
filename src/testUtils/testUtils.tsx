@@ -37,6 +37,14 @@ export const wrapWithRouter = (ui: React.ReactElement) => {
       path: path.homeCollection,
       element: ui,
     },
+    {
+      path: `${path.pictures}/modify`,
+      element: ui,
+    },
+    {
+      path: `${path.pictures}/1`,
+      element: ui,
+    },
   ];
 
   const router = createMemoryRouter(routes);

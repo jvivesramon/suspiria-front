@@ -15,3 +15,7 @@ export const LazyFormPage = lazy(() => import("../pages/FormPage/FormPage"));
 export const LazyDetailCardPage = lazy(
   () => import("../pages/DetailPicturePage/DetailPicturePage")
 );
+
+export const LazyUpdatePicturePage = lazy(
+  () => import("../pages/UpdatePicturePage/UpdatePicturePage")
+);

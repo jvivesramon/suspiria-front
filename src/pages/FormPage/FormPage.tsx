@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import PictureForm from "../../components/PictureForm/PictureForm";
 import useApi from "../../hooks/useApi/useApi";
-import { useAppDispatch } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { addPicturesActionCreator } from "../../store/pictures/picturesSlice";
 import { PictureCardStructure } from "../../types";
 import FormPageStyled from "./FormPageStyled";
@@ -11,6 +11,7 @@ const FormPage = (): React.ReactElement => {
   const { addPicture } = useApi();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { pictureId } = useAppSelector((store) => store.picturesStore);
 
   const handleOnSubmit = async (pictureData: Partial<PictureCardStructure>) => {
     try {
@@ -26,7 +27,12 @@ const FormPage = (): React.ReactElement => {
 
   return (
     <FormPageStyled>
-      <PictureForm onSubmit={handleOnSubmit} />
+      <PictureForm
+        titleForm="Create your own story"
+        textButton="Add story"
+        initialPictureState={pictureId}
+        onSubmit={handleOnSubmit}
+      />
     </FormPageStyled>
   );
 };
