@@ -13,6 +13,8 @@ import {
 import { server } from "../../mocks/server";
 import { errorHandlers, handlers } from "../../mocks/handlers";
 import Layout from "../../components/Layout/Layout";
+import { initialPictureIdState } from "../../mocks/mocks/picturesMock";
+import { actionMessage } from "../../utils/feedbackMessages/feedbackMessages";
 
 describe("Given a getPictures function", () => {
   describe("When it is called", () => {
@@ -164,6 +166,44 @@ describe("Given an getOnePicture function", () => {
 
         expect(thrownError).rejects.toThrowError(error);
       });
+    });
+  });
+});
+
+describe("Given a getUpdatedPicture function", () => {
+  describe("When it called with a valid picture", () => {
+    test("Then it should call the response's status method with 200 and the json method with the ok message", async () => {
+      server.resetHandlers(...handlers);
+
+      const message = "created";
+
+      const {
+        result: {
+          current: { getUpdatedPicture },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+      await getUpdatedPicture(initialPictureIdState);
+
+      expect(message).toBe(actionMessage.created);
+    });
+  });
+
+  describe("When it called with an invalid picture", () => {
+    test("Then it should thrown an error", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const error = new Error("Couldn't update the picture");
+
+      const {
+        result: {
+          current: { getUpdatedPicture },
+        },
+      } = renderHook(() => useApi(), { wrapper: wrapperWithProvider });
+
+      const thrownError = async () => getUpdatedPicture(initialPictureIdState);
+
+      expect(thrownError).rejects.toThrowError(error);
     });
   });
 });

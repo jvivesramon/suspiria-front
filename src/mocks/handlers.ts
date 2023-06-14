@@ -38,6 +38,10 @@ export const handlers = [
       ctx.json({ picture: pictureTotalData.pictureId })
     );
   }),
+
+  rest.put(`${apiUrl}${path.pictures}`, (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ message: "Succesfully updated" }));
+  }),
 ];
 
 export const errorHandlers = [
@@ -62,6 +66,10 @@ export const errorHandlers = [
 
   rest.get(`${apiUrl}${path.pictures}/:id`, (_req, res, ctx) => {
     return res(ctx.status(404), ctx.json("Couldn't find the picture"));
+  }),
+
+  rest.put(`${apiUrl}${path.pictures}`, (_req, res, ctx) => {
+    return res(ctx.status(404));
   }),
 ];
 
