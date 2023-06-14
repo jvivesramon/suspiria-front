@@ -71,6 +71,8 @@ const DetailPictureCardStyled = styled.div`
   }
 
   .card-description {
+    max-width: 100%;
+    overflow-wrap: break-word;
     font-family: ${(props) => props.theme.fonts.primary};
     font-size: ${(props) => props.theme.size.text};
     color: ${(props) => props.theme.colors.white};
