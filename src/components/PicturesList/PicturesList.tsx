@@ -10,9 +10,9 @@ const PicturesList = (): React.ReactElement => {
   return (
     <PicturesListStyled>
       <ul className="cards-list">
-        {picturesCard.map((picture) => (
+        {picturesCard.map((picture, position) => (
           <li className="picture-card" key={picture.id}>
-            <PictureCard picture={picture} userId={id} />
+            <PictureCard picture={picture} userId={id} position={position} />
           </li>
         ))}
       </ul>

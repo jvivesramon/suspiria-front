@@ -12,7 +12,11 @@ describe("Given a PictureCard component", () => {
     test("Then it should show picture card with its title", () => {
       renderWithProviders(
         wrapWithRouter(
-          <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />
+          <PictureCard
+            picture={pictureTotalData.pictures[0]}
+            userId={id}
+            position={0}
+          />
         ),
         {
           picturesStore: pictureTotalData,
@@ -31,7 +35,11 @@ describe("Given a PictureCard component", () => {
     test("Then it should show the picture card with its details", async () => {
       renderWithProviders(
         wrapWithRouter(
-          <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />
+          <PictureCard
+            picture={pictureTotalData.pictures[0]}
+            userId={id}
+            position={0}
+          />
         ),
         {
           picturesStore: pictureTotalData,
@@ -52,7 +60,11 @@ describe("Given a PictureCard component", () => {
 
       renderWithProviders(
         wrapWithRouter(
-          <PictureCard picture={pictureTotalData.pictures[0]} userId={id} />
+          <PictureCard
+            picture={pictureTotalData.pictures[0]}
+            userId={id}
+            position={0}
+          />
         ),
         {
           picturesStore: pictureTotalData,
