@@ -25,16 +25,6 @@ const PicturesPage = (): React.ReactElement => {
 
       if (pictures) {
         dispatch(loadPicturesActionCreator(pictures));
-
-        const preconnectElement = await document.createElement("link");
-        preconnectElement.rel = "preload";
-        preconnectElement.as = "image";
-        preconnectElement.href = pictures.pictures[0].image;
-
-        const parent = document.head;
-        const firstChild = document.head.firstChild;
-
-        parent.insertBefore(preconnectElement, firstChild);
       }
     })();
   }, [getPictures, dispatch, filterData, skip, limit, totalPictures]);
