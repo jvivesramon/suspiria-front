@@ -146,7 +146,57 @@ const useApi = () => {
     [dispatch, token]
   );
 
-  return { getPictures, deletePicture, addPicture, getOnePicture };
+  const getUpdatedPicture = async (
+    figure: Partial<PictureCardStructure>
+  ): Promise<string> => {
+    const request = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    try {
+      dispatch(showLoadingActionCreator());
+
+      const {
+        data: { message },
+      } = await axios.put<{ message: string }>(
+        `${apiUrl}${path.pictures}`,
+        figure,
+        request
+      );
+
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: false,
+          text: feedbackMessages.isOk,
+          modalActionText: actionMessage.updated,
+        })
+      );
+
+      return message;
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          text: feedbackMessages.isNotOk,
+          modalActionText: actionMessage.updated,
+        })
+      );
+
+      throw new Error("Couldn't update the picture");
+    }
+  };
+
+  return {
+    getUpdatedPicture,
+    getPictures,
+    deletePicture,
+    addPicture,
+    getOnePicture,
+  };
 };
 
 export default useApi;
