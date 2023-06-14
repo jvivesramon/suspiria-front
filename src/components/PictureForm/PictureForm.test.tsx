@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import PictureForm from "./PictureForm";
 import { vi } from "vitest";
+import { initialEmptyPictureState } from "../../utils/initialStates/initialStates";
 
 describe("Given a CardForm component", () => {
   const onClick = vi.fn();
@@ -12,7 +13,16 @@ describe("Given a CardForm component", () => {
       const buttonText = "Add story";
       const labelImageText = "Image URL* :";
 
-      renderWithProviders(wrapWithRouter(<PictureForm onSubmit={onClick} />));
+      renderWithProviders(
+        wrapWithRouter(
+          <PictureForm
+            titleForm="Create your own story"
+            textButton="Add story"
+            initialPictureState={initialEmptyPictureState}
+            onSubmit={onClick}
+          />
+        )
+      );
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
@@ -26,7 +36,16 @@ describe("Given a CardForm component", () => {
     test("Then it should show an 'Add story' button disabled", () => {
       const buttonText = "Add story";
 
-      renderWithProviders(wrapWithRouter(<PictureForm onSubmit={onClick} />));
+      renderWithProviders(
+        wrapWithRouter(
+          <PictureForm
+            titleForm="Create your own story"
+            textButton="Add story"
+            initialPictureState={initialEmptyPictureState}
+            onSubmit={onClick}
+          />
+        )
+      );
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
@@ -55,7 +74,16 @@ describe("Given a CardForm component", () => {
       const inputText =
         "https://cdn.discordapp.com/attachments/1094550845909114921/1107441064509448243/bb.jpg";
 
-      renderWithProviders(wrapWithRouter(<PictureForm onSubmit={onClick} />));
+      renderWithProviders(
+        wrapWithRouter(
+          <PictureForm
+            titleForm="Create your own story"
+            textButton="Add story"
+            initialPictureState={initialEmptyPictureState}
+            onSubmit={onClick}
+          />
+        )
+      );
 
       await userEvent.type(screen.getByLabelText(imageInputText), inputText);
       await userEvent.type(screen.getByLabelText(titleInputText), "Judit");

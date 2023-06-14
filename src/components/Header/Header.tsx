@@ -11,7 +11,7 @@ const Header = (): React.ReactElement => {
         <Navbar />
       ) : (
         <img
-          src="images/headerTitle/suspiria-title.svg"
+          src="/images/headerTitle/suspiria-title.svg"
           alt="Suspiria logo"
           width="144"
           height="56"
