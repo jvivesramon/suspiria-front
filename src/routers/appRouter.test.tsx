@@ -8,7 +8,7 @@ localStorage.setItem("token", tokenMock.token);
 
 describe("Given an appRouter", () => {
   describe("When its rendered", () => {
-    test("Then it should show a logo with an alternative text 'RetroWave logo'", () => {
+    test("Then it should show navbar with the text 'Home'", () => {
       const homeText = "Home";
 
       renderWithProviders(<RouterProvider router={appRouter} />);

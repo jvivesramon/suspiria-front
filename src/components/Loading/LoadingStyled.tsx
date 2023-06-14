@@ -33,16 +33,16 @@ const LoadingStyled = styled.div`
 
   @keyframes imageCycle {
     0% {
-      background-image: url(images/illustrations/woman-0.svg);
+      background-image: url(/images/illustrations/woman-0.svg);
     }
     32% {
-      background-image: url(images/illustrations/woman-1.svg);
+      background-image: url(/images/illustrations/woman-1.svg);
     }
     74% {
-      background-image: url(images/illustrations/woman-2.svg);
+      background-image: url(/images/illustrations/woman-2.svg);
     }
     100% {
-      background-image: url(images/illustrations/woman-3.svg);
+      background-image: url(/images/illustrations/woman-3.svg);
     }
   }
 `;

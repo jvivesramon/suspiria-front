@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import "@fontsource/jomolhari";
+import "@fontsource/gurajada";
 import { store } from "./store";
 import { ThemeProvider } from "styled-components";
 import { RouterProvider } from "react-router-dom";

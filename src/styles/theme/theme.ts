@@ -1,6 +1,4 @@
 import { DefaultTheme } from "styled-components";
-import "@fontsource/jomolhari";
-import "@fontsource/gurajada";
 
 const theme: DefaultTheme = {
   colors: {
