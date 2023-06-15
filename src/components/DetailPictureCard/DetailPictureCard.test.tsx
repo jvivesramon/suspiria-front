@@ -100,7 +100,7 @@ describe("Given a DetailPicturePage page", () => {
     });
   });
 
-  describe("When the user clicks on the button", () => {
+  describe("When the user clicks on the delete button", () => {
     test("Then it should delete the picture", async () => {
       const store = {
         pictureId: {
@@ -125,6 +125,34 @@ describe("Given a DetailPicturePage page", () => {
       await userEvent.click(expectedDeleteButton);
 
       expect(expectedDeleteButton).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user clicks on the modify button", () => {
+    test("Then it should redirect to the modify form", async () => {
+      const buttonText = "modify icon";
+
+      const store = {
+        pictureId: {
+          ...picturesMock.pictures[0],
+        },
+      };
+
+      const userId = "1234";
+
+      renderWithProviders(
+        wrapWithRouter(
+          <DetailPictureCard userId={userId} picture={store.pictureId} />
+        )
+      );
+
+      const expectedButton = screen.getByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.click(expectedButton);
+
+      expect(expectedButton).toBeInTheDocument();
     });
   });
 });

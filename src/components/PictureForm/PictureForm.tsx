@@ -4,35 +4,18 @@ import Button from "../Button/Button";
 import PictureFormStyled from "./PictureFormStyled";
 
 interface FormProps {
-  onSubmit: (pictureData: Partial<PictureCardStructure>) => void;
+  onSubmit: (pictureData: PictureCardStructure) => void;
+  initialPictureState: PictureCardStructure;
+  textButton: string;
+  titleForm: string;
 }
 
-const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
-  const initialPictureState: Partial<PictureCardStructure> = {
-    pictureData: {
-      title: "",
-      creationDate: "",
-      author: "",
-      movement: "",
-    },
-    image: "",
-    description: "",
-    temperatureColor: {
-      warm: false,
-      cold: false,
-      mixed: false,
-    },
-    colors: {
-      colorFirst: "",
-      colorSecond: "",
-      colorThird: "",
-      colorFourth: "",
-      colorFifth: "",
-      colorSixth: "",
-    },
-    user: "1",
-  };
-
+const PictureForm = ({
+  onSubmit,
+  initialPictureState,
+  textButton,
+  titleForm,
+}: FormProps): React.ReactElement => {
   const [pictureState, setPictureState] = useState(initialPictureState);
 
   const getColor = (color: string) => {
@@ -107,6 +90,7 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
         colorSixth: `#${pictureState.colors?.colorSixth}`,
       },
     });
+
     setPictureState(initialPictureState);
   };
 
@@ -124,7 +108,7 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
   return (
     <PictureFormStyled>
       <form autoComplete="off" className="form" onSubmit={handleOnSubmit}>
-        <h2 className="title-form">Create your own story</h2>
+        <h2 className="title-form">{titleForm}</h2>
 
         <span className="form__info">* Complete all required fields</span>
 
@@ -324,7 +308,7 @@ const PictureForm = ({ onSubmit }: FormProps): React.ReactElement => {
 
         <Button
           className={"create-button"}
-          text="Add story"
+          text={textButton}
           isDisable={isValid}
         />
       </form>

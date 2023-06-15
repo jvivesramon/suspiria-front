@@ -1,28 +1,23 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
-import PictureForm from "./PictureForm";
-import { vi } from "vitest";
-import { initialEmptyPictureState } from "../../utils/initialStates/initialStates";
+import UpdatePicturePage from "./UpdatePicturePage";
+import { pictureTotalData } from "../../mocks/mocks/picturesMock";
+import { handlers } from "../../mocks/handlers";
+import { server } from "../../mocks/server";
+import path from "../../routers/paths/paths";
+import PicturesPage from "../PicturesPage/PicturesPage";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
-describe("Given a CardForm component", () => {
-  const onClick = vi.fn();
-
+describe("Given an UpdatePicturePage page", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a 'Image* :' label and an 'Add story' button", () => {
-      const buttonText = "Add story";
+    test("Then it should show a 'modify story' button", () => {
+      const buttonText = "Modify story";
       const labelImageText = "Image URL* :";
 
-      renderWithProviders(
-        wrapWithRouter(
-          <PictureForm
-            titleForm="Create your own story"
-            textButton="Add story"
-            initialPictureState={initialEmptyPictureState}
-            onSubmit={onClick}
-          />
-        )
-      );
+      renderWithProviders(wrapWithRouter(<UpdatePicturePage />), {
+        picturesStore: pictureTotalData,
+      });
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
@@ -32,32 +27,28 @@ describe("Given a CardForm component", () => {
       expect(expectedButton).toBeInTheDocument();
       expect(expectedLabel).toBeInTheDocument();
     });
-
-    test("Then it should show an 'Add story' button disabled", () => {
-      const buttonText = "Add story";
-
-      renderWithProviders(
-        wrapWithRouter(
-          <PictureForm
-            titleForm="Create your own story"
-            textButton="Add story"
-            initialPictureState={initialEmptyPictureState}
-            onSubmit={onClick}
-          />
-        )
-      );
-
-      const expectedButton = screen.getByRole("button", {
-        name: buttonText,
-      });
-
-      expect(expectedButton).toBeDisabled();
-    });
   });
 
-  describe("When the user complete the fields", () => {
-    test("Then it should show an 'Add story' button enabled and it should be clicked", async () => {
-      const buttonText = "Add story";
+  describe("When the user types in", () => {
+    test("Then it should show a 'modify story' button enabled and has to be clicked", async () => {
+      server.resetHandlers(...handlers);
+
+      const routes = [
+        {
+          path: "/",
+          element: <UpdatePicturePage />,
+        },
+        {
+          path: path.homeCollection,
+          element: <PicturesPage />,
+        },
+      ];
+
+      const router = createMemoryRouter(routes);
+
+      const titleText = "Suspiria logo";
+      const buttonText = "Modify story";
+
       const imageInputText = "Image URL* :";
       const titleInputText = "Title* :";
       const authorInputText = "Author* :";
@@ -74,16 +65,7 @@ describe("Given a CardForm component", () => {
       const inputText =
         "https://cdn.discordapp.com/attachments/1094550845909114921/1107441064509448243/bb.jpg";
 
-      renderWithProviders(
-        wrapWithRouter(
-          <PictureForm
-            titleForm="Create your own story"
-            textButton="Add story"
-            initialPictureState={initialEmptyPictureState}
-            onSubmit={onClick}
-          />
-        )
-      );
+      renderWithProviders(<RouterProvider router={router} />);
 
       await userEvent.type(screen.getByLabelText(imageInputText), inputText);
       await userEvent.type(screen.getByLabelText(titleInputText), "Judit");
@@ -133,11 +115,13 @@ describe("Given a CardForm component", () => {
         name: buttonText,
       });
 
-      expect(expectedButton).toBeEnabled();
-
       await userEvent.click(expectedButton);
 
-      expect(onClick).toHaveBeenCalled();
+      const expectedLogo = screen.getByRole("img", {
+        name: titleText,
+      });
+
+      expect(expectedLogo).toBeInTheDocument();
     }, 10000);
   });
 });

@@ -5,6 +5,8 @@ import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { useAppDispatch } from "../../store";
 import { logoutUserActionCreator } from "../../store/user/userSlice";
 import path from "../../routers/paths/paths";
+import { loadPictureIdActionCreator } from "../../store/pictures/picturesSlice";
+import { initialEmptyPictureState } from "../../utils/initialStates/initialStates";
 
 const Navbar = (): React.ReactElement => {
   const { removeToken } = useLocalStorage();
@@ -21,6 +23,8 @@ const Navbar = (): React.ReactElement => {
 
   const onClickCreate = (): void => {
     navigate(path.form);
+
+    dispatch(loadPictureIdActionCreator(initialEmptyPictureState));
   };
 
   return (

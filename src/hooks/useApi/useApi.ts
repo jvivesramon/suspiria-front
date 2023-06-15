@@ -147,12 +147,8 @@ const useApi = () => {
   );
 
   const getUpdatedPicture = async (
-    figure: Partial<PictureCardStructure>
+    picture: PictureCardStructure
   ): Promise<string> => {
-    const request = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-
     try {
       dispatch(showLoadingActionCreator());
 
@@ -160,8 +156,10 @@ const useApi = () => {
         data: { message },
       } = await axios.put<{ message: string }>(
         `${apiUrl}${path.pictures}`,
-        figure,
-        request
+        picture,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
       dispatch(hideLoadingActionCreator());

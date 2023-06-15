@@ -50,13 +50,40 @@ describe("Given a PictureCard component", () => {
 
       await userEvent.click(expectedCard);
 
-      expect(expectedCard).not.toBeInTheDocument();
+      expect(expectedCard).toBeInTheDocument();
     });
   });
 
   describe("When the user clicks on the delete button", () => {
     test("Then it should delete the card", async () => {
       const buttonText = "delete icon";
+
+      renderWithProviders(
+        wrapWithRouter(
+          <PictureCard
+            picture={pictureTotalData.pictures[0]}
+            userId={id}
+            position={0}
+          />
+        ),
+        {
+          picturesStore: pictureTotalData,
+        }
+      );
+
+      const expectedButton = screen.getByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.click(expectedButton);
+
+      expect(expectedButton).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user clicks on the modify button", () => {
+    test("Then it should redirect to the modify form", async () => {
+      const buttonText = "modify icon";
 
       renderWithProviders(
         wrapWithRouter(

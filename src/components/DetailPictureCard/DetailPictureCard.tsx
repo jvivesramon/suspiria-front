@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../store";
 import {
   addFilterActionCreator,
   deletePictureActionCreator,
+  loadPictureIdActionCreator,
 } from "../../store/pictures/picturesSlice";
 import { paginationActionCreator } from "../../store/ui/uiSlice";
 import { PictureCardStructure } from "../../types";
@@ -45,6 +46,25 @@ const DetailPictureCard = ({
     dispatch(addFilterActionCreator(""));
 
     navigate(path.homeCollection);
+  };
+
+  const handleOnModify = async (picture: PictureCardStructure) => {
+    dispatch(
+      loadPictureIdActionCreator({
+        ...picture,
+        colors: {
+          ...picture.colors,
+          colorFirst: picture.colors.colorFirst?.slice(1),
+          colorSecond: picture.colors.colorSecond?.slice(1),
+          colorThird: picture.colors.colorThird?.slice(1),
+          colorFourth: picture.colors.colorFourth?.slice(1),
+          colorFifth: picture.colors.colorFifth?.slice(1),
+          colorSixth: picture.colors.colorSixth?.slice(1),
+        },
+      })
+    );
+
+    navigate(`${path.pictures}/modify`);
   };
 
   return (
@@ -118,7 +138,10 @@ const DetailPictureCard = ({
 
       {isOwner && (
         <>
-          <Button className="button button__modify">
+          <Button
+            actionOnClick={() => handleOnModify(picture)}
+            className="button button__modify"
+          >
             <img
               src="/images/components/modify.svg"
               alt="modify icon"

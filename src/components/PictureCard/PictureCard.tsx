@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useApi from "../../hooks/useApi/useApi";
 import { useAppDispatch } from "../../store";
 import {
   addFilterActionCreator,
   deletePictureActionCreator,
+  loadPictureIdActionCreator,
 } from "../../store/pictures/picturesSlice";
 import { paginationActionCreator } from "../../store/ui/uiSlice";
 import { PictureCardStructure } from "../../types";
@@ -24,6 +25,7 @@ const PictureCard = ({
 }: PictureCardProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { deletePicture } = useApi();
+  const navigate = useNavigate();
   const { colors: toneColors, user, id } = picture;
   const colors = Object.values(toneColors);
 
@@ -34,6 +36,25 @@ const PictureCard = ({
 
     dispatch(paginationActionCreator(0));
     dispatch(addFilterActionCreator(""));
+  };
+
+  const handleOnModify = async (picture: PictureCardStructure) => {
+    dispatch(
+      loadPictureIdActionCreator({
+        ...picture,
+        colors: {
+          ...picture.colors,
+          colorFirst: picture.colors.colorFirst?.slice(1),
+          colorSecond: picture.colors.colorSecond?.slice(1),
+          colorThird: picture.colors.colorThird?.slice(1),
+          colorFourth: picture.colors.colorFourth?.slice(1),
+          colorFifth: picture.colors.colorFifth?.slice(1),
+          colorSixth: picture.colors.colorSixth?.slice(1),
+        },
+      })
+    );
+
+    navigate(`${path.pictures}/modify`);
   };
 
   return (
@@ -64,7 +85,10 @@ const PictureCard = ({
       </ul>
       {user === userId && (
         <>
-          <Button className="button button__modify">
+          <Button
+            actionOnClick={() => handleOnModify(picture)}
+            className="button button__modify"
+          >
             <img
               src="images/components/modify.svg"
               alt="modify icon"

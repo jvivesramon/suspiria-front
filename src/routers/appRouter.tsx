@@ -8,6 +8,7 @@ import {
   LazyLoginPage,
   LazyNotFoundPage,
   LazyPicturesPage,
+  LazyUpdatePicturePage,
 } from "./lazyPages";
 
 const appRouter = createBrowserRouter([
@@ -56,6 +57,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense>
             <LazyDetailCardPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${path.pictures}/modify`,
+        element: (
+          <Suspense>
+            <LazyUpdatePicturePage />
           </Suspense>
         ),
       },
