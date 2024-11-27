@@ -2,8 +2,6 @@
 
 This application is developed with React, Vite, and Redux Toolkit. Its main concept is to showcase the main colors of famous paintings to the public. Additionally, users can create, update, and delete cards representing these colors.
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Judit-Vives-Final-Project-front-202304-bcn&metric=alert_status)](https://sonarcloud.io/summary/overall?id=isdi-coders-2023_Judit-Vives-Final-Project-front-202304-bcn)
-
 ## Features
 
 - Display main colors of famous paintings
